@@ -1,0 +1,55 @@
+{
+  "name": "core",
+  "version": "0.0.1",
+  "description": "Ядро для СП",
+  "author": "63pokupki.ru",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "./src/index.ts",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "cors": "^2.8.5",
+    "csv": "^5.1.1",
+    "ejs": "^2.6.2",
+    "express": "^4.16.4",
+    "knex": "^0.18.0",
+    "mysql": "^2.17.1",
+    "lodash": "^4.17.11",
+    "md5": "^2.2.1",
+    "mocha": "^5.2.0",
+    "moment": "^2.24.0",
+    "ts-mocha": "^2.0.0",
+    "ts-node": "^8.0.3",
+    "typescript-require": "^0.2.10",
+    "uniqid": "^5.0.3",
+    "utf8": "^3.0.0"
+  },
+  "devDependencies": {
+    "@trongnd/ts-nodemon": "^1.0.3",
+    "@types/expect": "^1.20.4",
+    "@types/express": "^4.16.1",
+    "@types/lodash": "^4.14.123",
+    "@types/md5": "^2.1.33",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.11.5",
+    "nodemon": "^1.18.10",
+    "ts-mocha": "^2.0.0",
+    "typescript": "^3.3.4000"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
+  },
+  "scripts": {
+    "migration:mysql:create": "knex migrate:make",
+    "migration:mysql:up": "knex migrate:latest",
+    "migration:mysql:down": "knex migrate:rollback",
+    "start": "ts-node ./src/index.ts",
+    "dev": "ts-node ./src/index.ts",
+    "test": "ts-mocha",
+    "watch": "nodemon -e ts -w ./src -x npm run watch:serve",
+    "watch:serve": "ts-node ./src/index.ts",
+    "lint": "eslint --ext .ts,.js src/"
+  }
+}

@@ -1,0 +1,41 @@
+.products {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.product {
+  width: 400px;
+  margin-bottom: 2rem;
+
+  margin-left: 10px;
+  margin-right: 10px;
+
+  .card-image {
+    height: 400px;
+    cursor: pointer;
+  }
+  .price {
+    text-align: right;
+    font-size: 1.5rem;
+  }
+
+  .p-img {
+    width: 400px;
+  }
+
+  .img-2 {
+    position: relative;
+    top: -400px;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+  }
+}
+
+.product:hover {
+  .img-2 {
+    opacity: 1;
+  }
+}

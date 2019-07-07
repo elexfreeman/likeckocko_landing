@@ -1,0 +1,25 @@
+.top-container {
+  h1 {
+      text-align: center;
+      color: $dark-color;
+      font-size: 1.8em;
+      padding-top: 1rem;
+  }
+
+  h2 {
+      text-align: center;
+      color: $primary-color;
+      font-size: 1em;
+      padding-top: 0;
+  }
+
+  .top-logo {
+    padding-top: 2rem;
+    
+    img {
+      width: 16rem;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}

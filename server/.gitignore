@@ -1,0 +1,9 @@
+### Исключаем NodeJS module
+node_modules/
+
+.idea/
+src/Configs/pg.json
+src/Configs/my.json
+src/Configs/mysql.json
+src/Configs/redis.json
+src/Configs/general.json
