@@ -1,24 +1,28 @@
-import container from "./DI";
-import {AwilixContainer} from "awilix";
-import {UserSys} from "./UserSys";
-import {ErrorSys} from "./ErrorSys";
-import {ResponseSys} from "./ResponseSys";
-import MainRequest from "./MainRequest";
+import * as express from 'express';
+import MainRequest from '../System/MainRequest';
+import { Product } from '../Infrastructure/typeOrm/Entity/Product';
+import orm from "../Infrastructure/typeOrm/Connect";
 
-export class BaseController
-{
-    public userSys:UserSys;
-    public errorSys:ErrorSys;
-    public responseSys:ResponseSys;
-    public DI:AwilixContainer;
+/**
+ * Контроллер 
+ */
+export default class BaseController {
 
-    constructor(req:MainRequest)
-    {
-        // Инициализация системных сервисов
-        this.userSys     = req.sys.userSys;
-        this.errorSys    = req.sys.errorSys;
-        this.responseSys = req.sys.responseSys;
+    protected req: any;
+    protected resp: any;
 
-        this.DI = container;
+    protected connection: any; // подключение к DB
+
+    constructor(req: MainRequest, resp: any) {        
+        this.req = req;
+        this.resp = resp;
     }
+
+    static async Init(req: MainRequest, resp: any): Promise<BaseController> {
+        let self = new this(req, resp);
+        self.connection = await orm;
+        return self;
+    }
+
+
 }

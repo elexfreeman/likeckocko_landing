@@ -15,13 +15,15 @@
     "ejs": "^2.6.2",
     "express": "^4.16.4",
     "knex": "^0.18.0",
-    "mysql": "^2.17.1",
     "lodash": "^4.17.11",
     "md5": "^2.2.1",
     "mocha": "^5.2.0",
     "moment": "^2.24.0",
+    "mysql": "^2.17.1",
+    "reflect-metadata": "^0.1.13",
     "ts-mocha": "^2.0.0",
     "ts-node": "^8.0.3",
+    "typeorm": "^0.2.18",
     "typescript-require": "^0.2.10",
     "uniqid": "^5.0.3",
     "utf8": "^3.0.0"
@@ -42,14 +44,16 @@
     "fsevents": "*"
   },
   "scripts": {
-    "migration:mysql:create": "knex migrate:make",
-    "migration:mysql:up": "knex migrate:latest",
-    "migration:mysql:down": "knex migrate:rollback",
-    "start": "ts-node ./src/index.ts",
-    "dev": "ts-node ./src/index.ts",
-    "test": "ts-mocha",
-    "watch": "nodemon -e ts -w ./src -x npm run watch:serve",
-    "watch:serve": "ts-node ./src/index.ts",
-    "lint": "eslint --ext .ts,.js src/"
+    "migration:mysql:create": "./node_modules/.bin/knex migrate:make",
+    "migration:mysql:up": "./node_modules/.bin/knex migrate:latest",
+    "migration:mysql:down": "./node_modules/.bin/knex migrate:rollback",
+    "start": "./node_modules/.bin/ts-node ./src/index.ts",
+    "dev": "./node_modules/.bin/ts-node ./src/index.ts",
+    "test": "./node_modules/.bin/ts-mocha",
+    "watch": "./node_modules/.bin/nodemon -e ts -w ./src -x npm run watch:serve",
+    "watch:serve": "./node_modules/.bin/ts-node ./src/index.ts",
+    "lint": "./node_modules/.bin/eslint --ext .ts,.js src/",
+    "t-dev": "./node_modules/.bin/ts-node"
+
   }
 }

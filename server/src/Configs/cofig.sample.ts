@@ -5,6 +5,19 @@ const config = {
     email: '',
   },
 
+  typeorm: {
+    type: "mysql",
+    host: "localhost",
+    port: 3306,
+    username: "root",
+    password: "admin",
+    database: "test",
+    entities: [
+        __dirname + "/entity/*.js"
+    ],
+    synchronize: true,
+},
+
 
   server: {
     "port": 3005

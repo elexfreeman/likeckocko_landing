@@ -4,10 +4,10 @@
         <div class="card product">
             <div class="card-image">
                 <img class="p-img img-1" src="/img/<%= p.img %>" alt="<%= p.caption %>">
-                <img class="p-img img-2" src="/img/<%= p.img_b %>" alt="<%= p.caption %>">
+                <img class="p-img img-2" src="/img/<%= p.bgImg() %>" alt="<%= p.caption %>">
             </div>
             <div class="card-header">
-                <div class="card-title h5"><%= p.caption %></div>
+                <div class="card-title h5"><%= p.caption %> <%= p.getUrl() %></div>
                 <div class="card-subtitle text-gray"><%= p.description %></div>
             </div>
             <div class="card-body">
