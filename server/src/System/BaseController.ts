@@ -1,6 +1,4 @@
-import * as express from 'express';
 import MainRequest from '../System/MainRequest';
-import { Product } from '../Infrastructure/typeOrm/Entity/Product';
 import orm from "../Infrastructure/typeOrm/Connect";
 
 /**

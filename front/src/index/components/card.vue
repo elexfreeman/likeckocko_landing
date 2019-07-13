@@ -8,7 +8,7 @@
 
 
 export default {
-  name: "indexPage",
+  name: "card",
 
   data() {
     return {};
