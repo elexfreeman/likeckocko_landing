@@ -2,8 +2,12 @@ import Vue from 'vue';
 
 import toCard from "./components/toCard.vue";
 import store from './index_vuex';
+import Card from './Card';
 
 var buttons = document.querySelectorAll(".cart-button");
+let card = new Card();
+
+store.commit('setCard',card);
 
 
 for (let i = 0; i < buttons.length; i++) {

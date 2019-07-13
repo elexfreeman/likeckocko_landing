@@ -6,13 +6,16 @@ Vue.use(Vuex);
 export const store = {
     /*дефолтный стайт*/
     state: {
-
-
+        card: null,
+        showMsgModal: null
 
     },
     mutations: {
-        setErrorParsing(state: any, data: any) {
-
+        setCard(state: any, data: any) {
+            this.card = data;
+        },
+        setShowMsgModal(state: any, data: any) {
+            this.showMsgModal = data;
         },
     }
 };

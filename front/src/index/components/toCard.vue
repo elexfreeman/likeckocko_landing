@@ -1,32 +1,26 @@
 <template>
   <div class="toCard">
-    <a class="btn btn-primary btn-lg" href="#cards">В корзину</a>
+    <button v-on:click="onAddCard" class="btn btn-primary btn-lg" href="#cards">В корзину</button>
   </div>
 </template>
 
 <script>
+import CardController from "../CardController";
+
+cardController = new CardController();
+
 export default {
   name: "toCard",
 
   data() {
-    return {
-    /*   product_id: '',
-      product_caption: '',
-      product_price: '', */
-    };
-  }, // data
+    return {};
+  },
 
-  //props: ['product_id','product_caption','product_price'],
-
-  mounted() {
-    console.log(this.$parent.product_id);
-    console.log(this.$parent.product_caption);
-    console.log(this.$parent.product_price);
-  }, // mounted
+  mounted() {}, // mounted
 
   methods: {
-    testCheck(e) {
-      console.log(e);
+    onAddCard(e) {
+      cardController.onAddCard(this.$parent);
     }
   }, // methods
 
