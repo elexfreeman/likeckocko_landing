@@ -15,7 +15,7 @@ export default class CardController {
      * @param data 
      */
     onAddCard(data) {
-        console.log(data);
+        
         this.card.add({
             id: parseInt(data.product_id),
             caption: data.product_caption,
@@ -31,4 +31,15 @@ export default class CardController {
 
     }
 
+
+    onShowCard() {
+        store.commit("setShowCard", true);
+    }
+
+    onHideCard() {
+        store.commit("setShowCard", false);
+    }
+
 }
+
+

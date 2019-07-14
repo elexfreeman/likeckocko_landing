@@ -7,8 +7,7 @@
 <script>
 import CardController from "../CardController.ts";
 
-let cardController = new CardController();
-
+const cardController = new CardController();
 export default {
   name: "toCard",
 

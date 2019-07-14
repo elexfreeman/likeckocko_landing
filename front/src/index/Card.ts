@@ -72,7 +72,7 @@ export default class Card {
                     caption: card[i]['caption'],
                     price: parseFloat(card[i]['price']),
                     img: card[i]['img'],
-                    count: 1
+                    count: card[i]['count']
                 })
             }
         } catch (e) {           

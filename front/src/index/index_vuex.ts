@@ -8,7 +8,8 @@ export const store = {
     state: {
         card: null,
         showMsgModal: '',
-        phone: window.phone
+        phone: window.phone,
+        showCard: false
 
     },
     mutations: {
@@ -17,6 +18,9 @@ export const store = {
         },
         setShowMsgModal(state: any, data: any) {
             state.showMsgModal = data;
+        },
+        setShowCard(state: any, data: any) {
+            state.showCard = data;
         },
     }
 };

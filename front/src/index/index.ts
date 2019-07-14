@@ -9,7 +9,7 @@ import Card from './Card';
 
 
 var buttons = document.querySelectorAll(".cart-button");
-let card = new Card();
+let card = Card.Init();
 
 store.commit('setCard', card);
 

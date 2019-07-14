@@ -1,6 +1,5 @@
 <template>
-  <div class="msgModal">
-    <!-- v-bind:class="{'active': showMsgModal}" -->
+  <div class="msgModal">    
     <div v-bind:class="{'active': showMsgModal}" class="modal" id="modal-id">
       <div class="modal-container">
         <div class="modal-header">
