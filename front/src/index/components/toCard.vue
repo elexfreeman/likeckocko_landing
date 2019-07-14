@@ -1,13 +1,13 @@
 <template>
   <div class="toCard">
-    <button v-on:click="onAddCard" class="btn btn-primary btn-lg" href="#cards">В корзину</button>
+    <button v-on:click="onAddCard" class="btn btn-primary btn-lg">В корзину</button>
   </div>
 </template>
 
 <script>
-import CardController from "../CardController";
+import CardController from "../CardController.ts";
 
-cardController = new CardController();
+let cardController = new CardController();
 
 export default {
   name: "toCard",

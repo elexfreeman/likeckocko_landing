@@ -15,8 +15,13 @@ export default class Card {
     public products: ProductI[];
 
     constructor() {
-        this.products = [];
-        this.load();
+        this.products = [];      
+    }
+
+    public static Init() {
+        let self = new Card;
+        self.load();
+        return self;
     }
 
     public remove(id: number) {
@@ -31,6 +36,7 @@ export default class Card {
     }
 
     public add(product: ProductI) {
+        
         let newP = true;
         for (let i = 0; i < this.products.length; i++) {
             if (this.products[i].id == product.id) {
@@ -51,7 +57,7 @@ export default class Card {
      * Загрудает товары из localStorage
      */
     public load() {
-
+        this.products = [];
         try {
             let card = localStorage.getItem('card');
             if (!card) {
@@ -69,18 +75,15 @@ export default class Card {
                     count: 1
                 })
             }
-        } catch (e) {
-            console.log(e);
+        } catch (e) {           
             this.save();
-
         }
     }
 
     /**
      * Сохраняем товары в localStorage
      */
-    public save() {
-        console.log(this.products);
+    public save() {       
         localStorage.setItem('card', JSON.stringify(this.products));
     }
 }

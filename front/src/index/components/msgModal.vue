@@ -1,17 +1,15 @@
 <template>
   <div class="msgModal">
+    <!-- v-bind:class="{'active': showMsgModal}" -->
     <div v-bind:class="{'active': showMsgModal}" class="modal" id="modal-id">
-     
       <div class="modal-container">
         <div class="modal-header">
           <a href="#close" class="btn btn-clear float-right" aria-label="Close"></a>
           <div class="modal-title h5"></div>
         </div>
         <div class="modal-body">
-          <div class="content">
-            {{showMsgModal}}
-          </div>
-        </div>        
+          <div class="text-center" style="font-size: 1.5rem;">{{showMsgModal}}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -19,7 +17,7 @@
 
 <script>
 export default {
-  name: "card",
+  name: "msgModal",
 
   data() {
     return {};
@@ -35,7 +33,8 @@ export default {
 
   computed: {
     showMsgModal() {
-      return this.$store.showMsgModal;
+      console.log(this.$store.state.showMsgModal);
+      return this.$store.state.showMsgModal;
     }
   }, // computed
 

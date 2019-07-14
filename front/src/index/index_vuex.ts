@@ -1,21 +1,22 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
+declare var window;
 Vue.use(Vuex);
 
 export const store = {
     /*дефолтный стайт*/
     state: {
         card: null,
-        showMsgModal: null
+        showMsgModal: '',
+        phone: window.phone
 
     },
     mutations: {
         setCard(state: any, data: any) {
-            this.card = data;
+            state.card = data;
         },
         setShowMsgModal(state: any, data: any) {
-            this.showMsgModal = data;
+            state.showMsgModal = data;
         },
     }
 };
