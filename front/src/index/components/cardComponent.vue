@@ -8,7 +8,7 @@
         </div>
         <div class="column col-sm-2"></div>
         <div class="column col-4 text-right card-col">
-          <img v-on:click="onShowCard" class="card-ico" src="/img/card-ico.png" />
+          <img v-if="card.products.length > 0" v-on:click="onShowCard" class="card-ico" src="/img/card-ico.png" />
         </div>
       </div>
     </div>
@@ -20,39 +20,44 @@
           <div class="modal-header">
             <span v-on:click="onHideCard" class="btn btn-clear float-right" aria-label="Close"></span>
             <div class="modal-title h5">
-              <img class="card-ico" src="/img/card-ico.png" /> 
+              <img class="card-ico" src="/img/card-ico.png" />
               <span>Корзина</span>
-              </div>
+            </div>
           </div>
           <div class="modal-body">
             <div class="content">
               <div v-bind:key="index" v-for="(item, index) in card.products">
                 <div class="columns card-list">
-                  <div class="column col-xs-3">
+                  <div class="column col-2">
                     <img class="card-img" v-bind:src="item.img" />
                   </div>
-                  <div class="column col-xs-5">{{item.caption}}</div>
-                  <div class="column col-xs-2">
-                    <div class="form-group">                     
-                      <input v-model='item.count' class="form-input" type="number" />
-                    </div>                    
+                  <div class="column col-7">{{item.caption}}</div>
+                  <div class="column col-2">
+                    <div class="form-group">
+                      <input v-model="item.count" class="form-input" type="number" />
+                    </div>
                   </div>
-                  <div class="column col-xs-1">
-                    <button class="btn btn-action"><i class="icon icon-delete"></i>  </button>
+                  <div class="column col-1">
+                    <button class="btn btn-action">
+                      <i class="icon icon-delete"></i>
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="modal-footer">
-            <div class='phone-caption'>Ваш телефон:</div>
-            <div class="phone-input">
-              <input  class="form-input" type="text" />
+          <div class="modal-footer">           
+            <div class="form-group">
+              <label class="form-label" for="input-example-1">Ваше имя:</label>
+              <input class="form-input" type="text"  />
             </div>
-            <div class="phone-input-m">
-              <input  class="form-input" type="text" placeholder="Ваш номер телефона +7..." />
+            <div class="form-group">
+              <label class="form-label" for="input-example-1">Ваш телефон:</label>
+              <input class="form-input" type="text"  />
             </div>
+            <div class="card-button text-right">
             <button class="btn btn-primary btn-lg">Заказать</button>
+            </div>
           </div>
         </div>
       </div>

@@ -9,25 +9,13 @@
     }
 
     .modal-footer {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding-left: 4rem;
+      padding-right: 4rem;
+      text-align: left;
 
-      .phone-caption {
-        width: 21%;
-        text-align: left;
+      .card-button{
+        padding-top:1rem;
       }
-
-      .phone-input {
-        width: 41%;
-        padding-right: 1rem;
-      }
-
-      
-      .phone-input-m {
-       display: none;
-      }
-
     }
   }
 
@@ -40,6 +28,7 @@
     justify-content: center;
     img {
       width: 100%;
+      border-radius: 0.5rem;
     }
     .column {
       padding-top: 1rem;
