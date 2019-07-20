@@ -1,13 +1,15 @@
-import Card from './Card';
+import { Card } from '../objects/Card';
 import store from './index_vuex';
+import { User } from '../objects/User';
 
 export default class CardController {
 
     public card: Card;
+    public user: User;
 
     constructor() {
-        this.card = Card.Init();
-        store.commit("setCard", this.card);
+        this.card = store.state.card;
+        this.user = store.state.user;
     }
 
     /**
@@ -15,7 +17,7 @@ export default class CardController {
      * @param data 
      */
     onAddCard(data) {
-        
+
         this.card.add({
             id: parseInt(data.product_id),
             caption: data.product_caption,
@@ -23,6 +25,7 @@ export default class CardController {
             img: data.product_img,
             count: 1
         });
+        
         store.commit("setCard", this.card);
         store.commit("setShowMsgModal", 'Товар добавлен в корзину');
         setTimeout(() => {

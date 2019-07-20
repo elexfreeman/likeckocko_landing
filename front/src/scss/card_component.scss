@@ -1,4 +1,62 @@
 .card_component {
+  .col-order {
+    border-right: 1px solid #ddd;
+  }
+
+  .col-card,
+  .col-order {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .card-caption-1 {
+    font-size: 1rem;
+    padding-bottom: 1rem;
+  }
+  .modal.modal-lg .modal-overlay {
+    background: rgba(150, 150, 150, 0.6902);
+  }
+
+  .modal-body {
+    padding-top: 0;
+  }
+
+  .modal-container .modal-header {
+    background: #f3f3f3;
+  }
+
+  .modal-container {
+    padding: 0;
+    border-radius: 5px;
+  }
+
+  .item-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-button {
+    button {
+      width: 9rem;
+    }
+  }
+
+  .card-counter {
+    display: flex;
+    align-items: center;
+    span {
+      padding: 1rem;
+    }
+    .conter-button {
+      cursor: pointer;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+    }
+  }
+
   .cardModal {
     .modal-title {
       display: flex;
@@ -13,8 +71,8 @@
       padding-right: 4rem;
       text-align: left;
 
-      .card-button{
-        padding-top:1rem;
+      .card-button {
+        padding-top: 1rem;
       }
     }
   }

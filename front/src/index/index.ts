@@ -5,7 +5,7 @@ import msgModal from "./components/msgModal.vue";
 import cardComponent from "./components/cardComponent.vue";
 
 import store from './index_vuex';
-import Card from './Card';
+import {Card} from '../objects/Card';
 
 
 var buttons = document.querySelectorAll(".cart-button");

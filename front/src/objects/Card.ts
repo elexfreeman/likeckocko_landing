@@ -1,5 +1,6 @@
 declare var localStorage;
-interface ProductI {
+
+export interface CardProductI {
     id: number;
     caption: string;
     price: number;
@@ -10,9 +11,9 @@ interface ProductI {
 /**
  * Работа с корзиной
  */
-export default class Card {
+export class Card {
 
-    public products: ProductI[];
+    public products: CardProductI[];
 
     constructor() {
         this.products = [];      
@@ -35,7 +36,7 @@ export default class Card {
         this.save();
     }
 
-    public add(product: ProductI) {
+    public add(product: CardProductI) {
         
         let newP = true;
         for (let i = 0; i < this.products.length; i++) {
