@@ -1,17 +1,16 @@
+declare var localStorage;
 import { Card } from "./Card";
+import BaseObject from "./BaseObject";
 
-export class User {
+export class User extends BaseObject {
+
+    public token: string;
     public name: string;
     public phone: string;
 
-
-    private card: Card; // корзина
-
-    constructor(card: Card) {
-        this.card = card;
+    constructor() {
+        super();      
+        this.token = localStorage.getItem('token');
     }
 
-    public checkout() {
-
-    }
 }

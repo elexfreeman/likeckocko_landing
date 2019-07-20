@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 
 let card = Card.Init();
-let user = new User(card);
+let user = new User();
 
 export const store = {
     /*дефолтный стайт*/
@@ -22,11 +22,9 @@ export const store = {
     mutations: {
         setUser(state: any, data: any) {
             state.user = data;
-            state.card = state.user.card;
         },
         setCard(state: any, data: any) {
             state.card = data;
-            state.user.card = card;
         },
         setShowMsgModal(state: any, data: any) {
             state.showMsgModal = data;
