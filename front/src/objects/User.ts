@@ -1,5 +1,4 @@
 declare var localStorage;
-import { Card } from "./Card";
 import BaseObject from "./BaseObject";
 
 export class User extends BaseObject {
