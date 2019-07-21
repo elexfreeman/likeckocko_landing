@@ -1,6 +1,4 @@
 import store from './index_vuex';
-import { Order } from '../objects/Order';
-
 
 export default class CardController {
 
@@ -47,12 +45,16 @@ export default class CardController {
      * Офрмить заказ
      */
     public async checkout() {
+        store.commit('setOnLoad', true);
         let card = store.state.card;
         let user = store.state.user;
 
-        let order = new Order(user, card);
+        let order = store.state.order;
 
-        let resp = await order.Checkout();
+        console.log(card, user, order);
+        let resp = await order.Checkout(user, card);
+
+        store.commit('setOnLoad', false);
 
     }
 
