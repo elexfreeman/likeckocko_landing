@@ -27,7 +27,6 @@ class OrderController extends BaseController {
 
         let user = new User();
         let order = new Order;
-        
 
         const products = await this.connection.manager.find(Product);
         this.resp.render('index', { page: "Главная", products: products });

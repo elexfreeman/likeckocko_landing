@@ -23,10 +23,13 @@ export class Order {
     @Column({ type: "varchar", length: 400, nullable: true })
     deliveryTimeComment: string;
 
+    @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
+    createAt: string;
+
     @ManyToOne(type => User, user => user.orders)
     user: User;
 
-    @OneToMany(type => OrderProduct, order_product => order_product.order)
-    order_product: OrderProduct[];
+   /*  @OneToMany(type => OrderProduct, order_product => order_product.order)
+    order_product: OrderProduct[]; */
 
 }

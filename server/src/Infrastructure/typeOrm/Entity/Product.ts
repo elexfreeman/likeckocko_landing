@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, Index } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Index, OneToMany } from 'typeorm';
 import UrlGetCyrillic from '../../../Lib/UrlGetCyrillic';
+import { OrderProduct } from './OrderProduct';
 
 @Entity()
 export class Product {
@@ -22,6 +23,9 @@ export class Product {
     @Index()
     @Column({ type: 'tinyint', default: 1 })
     isPublished: boolean;
+
+    @OneToMany(type => OrderProduct, orderProduct => orderProduct.product)
+    orderProduct: OrderProduct;
 
     /**
      * парсинг подложки картинки

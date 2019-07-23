@@ -16,6 +16,9 @@ export class User {
     @Column({ type: "varchar", length: 400, nullable: true })
     token: string;
 
+    @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP"})
+    createAt: string;
+
     @OneToMany(type => Order, order => order.user)
     orders: Order[];
 

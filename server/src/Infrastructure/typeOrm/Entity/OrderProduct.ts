@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne, JoinColumn, OneToMany, Index } from 'typeorm';
 import { Product } from './Product';
 import { Order } from './Order';
 
@@ -23,12 +23,17 @@ export class OrderProduct {
     @Column({ type: "varchar", length: 400, nullable: true })
     deliveryTimeComment: string;
 
-    @OneToOne(type => Product)
-    @JoinColumn()
+    @Column({ type: 'decimal', default: 0, precision: 10, scale: 2 })
+    price: number;
+
+    
+    @OneToOne(type => Product)    
+    @JoinColumn()   
     product: Product;
 
 
-    @ManyToOne(type => Order, order => order.order_product)
+    @OneToOne(type => Order)    
+    @JoinColumn()   
     order: Order;
 
 }
