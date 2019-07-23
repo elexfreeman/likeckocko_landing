@@ -7,7 +7,7 @@ import { ErrorSys } from './ErrorSys';
  */
 export default class BaseController {
 
-    protected req: any;
+    protected req: MainRequest;
     protected resp: any;
 
     protected connection: any; // подключение к DB
