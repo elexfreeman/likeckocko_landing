@@ -1,9 +1,8 @@
 import "reflect-metadata";
 import { typeorm } from '../../Configs/config';
-import { createConnection } from 'typeorm';
+import { createConnection, ConnectionOptions } from 'typeorm';
 import { Product } from './Entity/Product';
 
+console.log(typeorm);
 
-typeorm.entities.push(Product);
-
-export default createConnection(typeorm);
+export default createConnection(<ConnectionOptions> typeorm);

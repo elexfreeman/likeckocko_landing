@@ -1,23 +1,22 @@
-const config = {
+export const typeorm = {
+  type: "mysql",
+  host: "localhost",
+  port: 3306,
+  username: "",
+  password: "",
+  database: "",
+  entities: [
+    __dirname + "/../Infrastructure/typeOrm/Entity/*.ts"
+  ],
+  synchronize: true,
+}
+
+export const config = {
 
   site: {
     phone: '',
     email: '',
   },
-
-  typeorm: {
-    type: "mysql",
-    host: "localhost",
-    port: 3306,
-    username: "root",
-    password: "admin",
-    database: "test",
-    entities: [
-        __dirname + "/entity/*.js"
-    ],
-    synchronize: true,
-},
-
 
   server: {
     "port": 3005
@@ -38,7 +37,5 @@ const config = {
     },
     "acquireConnectionTimeout": 60000
   },
-  
-}
 
-export default config;
+}

@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
-import { User } from './User';
-import { OrderProduct } from './OrderProduct';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne, JoinColumn } from 'typeorm';
+import { Product } from './Product';
+import { Order } from './Order';
 
 @Entity()
-export class Order {
+export class OrderProduct {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -23,10 +23,12 @@ export class Order {
     @Column({ type: "varchar", length: 400, nullable: true })
     deliveryTimeComment: string;
 
-    @ManyToOne(type => User, user => user.orders)
-    user: User;
+    @OneToOne(type => Product)
+    @JoinColumn()
+    product: Product;
 
-    @OneToMany(type => OrderProduct, order_product => order_product.order)
-    order_product: OrderProduct[];
+
+    @ManyToOne(type => Order, order => order.order_product)
+    order: Order;
 
 }

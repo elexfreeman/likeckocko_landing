@@ -26,50 +26,50 @@ const run = async () => {
                 const connection = await orm;
 
                 /*  let product = new Product();
-                 product.caption = 'Шоколадка';
-                 product.img = 'gork-99-p1.jpg'; */
+                product.caption = 'Шоколадка';
+                product.img = 'gork-99-p1.jpg'; */
 
                 let product = new Product();
-                product.caption = 'Шоколадка';                
+                product.caption = 'Шоколадка';
                 product.img = 'gork-99-p1.jpg';
                 await connection.manager.save(product);
-                
+
                 product = new Product();
                 product.caption = 'Шоколадка';
                 product.img = 'gork-pl-1.jpg';
                 await connection.manager.save(product);
-                
+
                 product = new Product();
                 product.caption = 'Шоколадка';
                 product.img = 'majent1.jpg';
                 await connection.manager.save(product);
-              
-                
+
+
                 product = new Product();
                 product.caption = 'Шоколадка';
                 product.img = 'matcha1.jpg';
                 await connection.manager.save(product);
-                
+
                 product = new Product();
                 product.caption = 'Шоколадка';
                 product.img = 'myta1.jpg';
                 await connection.manager.save(product);
-                
+
                 product = new Product();
                 product.caption = 'Шоколадка';
                 product.img = 'matcha-s-1.jpg';
                 await connection.manager.save(product);
-                
+
                 product = new Product();
                 product.caption = 'Шоколадка';
                 product.img = 'oblep1.jpg';
                 await connection.manager.save(product);
-                
+
                 product = new Product();
                 product.caption = 'Шоколадка';
                 product.img = 'rg-1.jpg';
                 await connection.manager.save(product);
-                
+
                 product = new Product();
                 product.caption = 'Шоколадка';
                 product.img = 'yellow1.jpg';
