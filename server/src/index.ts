@@ -38,6 +38,10 @@ app.use(AuthSysMiddleware);
 import * as IndexController from './Controller/IndexController';
 app.use(IndexController.router);
 
+// Базовый модуль
+import * as OrderController from './Controller/OrderController';
+app.use(OrderController.router);
+
 
 console.log('server start at http://localhost:3005');
 app.listen(3005);

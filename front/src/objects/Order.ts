@@ -31,7 +31,8 @@ export class Order extends BaseObject {
 
         let reps = await this.axios.post(this.apiUrl + '/order/checkout', {
             user: user,
-            card: card
+            card: card,
+            order: this
         })
 
         return this.ok;

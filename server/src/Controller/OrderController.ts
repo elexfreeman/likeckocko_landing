@@ -25,6 +25,7 @@ class OrderController extends BaseController {
      */
     public async Checkout() {
         console.log('Api Checkout page');
+        let order = new Order();
         try {
 
             if (!this.req.body['card']) {
@@ -62,7 +63,7 @@ class OrderController extends BaseController {
             await this.connection.manager.save(user);
 
             /* создаем заказ юзера */
-            let order = new Order();
+
             order.comment = 'comment';
             order.user = user;
             await this.connection.manager.save(order);
@@ -89,11 +90,10 @@ class OrderController extends BaseController {
             console.log(e)
         }
 
+        this.resp.send(
+            this.responseSys.response(order, 'Катлог обновлен')
+        );
 
-        let user = new User();
-        let order = new Order;
-
-        this.resp.render('index', { page: "Главная", products: {} });
     }
 
 }
@@ -101,7 +101,7 @@ class OrderController extends BaseController {
 /**
  * Оформить заказ
  */
-router.get('/', async (req: any, res: any, next) => {
+router.post('/order/checkout', async (req: any, res: any, next) => {
     const self = <OrderController>await OrderController.Init(req, res);
     self.Checkout();
 });
