@@ -26,6 +26,9 @@ export class OrderProduct {
     @Column({ type: 'decimal', default: 0, precision: 10, scale: 2 })
     price: number;
 
+    @Column({ type: 'int', default: 0 })
+    count: number;
+
     
     @OneToOne(type => Product)    
     @JoinColumn()   

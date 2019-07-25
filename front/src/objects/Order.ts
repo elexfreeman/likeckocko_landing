@@ -25,17 +25,17 @@ export class Order extends BaseObject {
     /**
      * Оформить заказ
      */
-    public async Checkout(user: User, card: Card): Promise<boolean> {
+    public async Checkout(user: User, card: Card) {
 
         this.ok = true;
 
-        let reps = await this.axios.post(this.apiUrl + '/order/checkout', {
+        let resp = await this.axios.post(this.apiUrl + '/order/checkout', {
             user: user,
             card: card,
             order: this
         })
 
-        return this.ok;
+        return resp['data'];
     }
 
 

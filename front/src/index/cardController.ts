@@ -53,7 +53,8 @@ export default class CardController {
 
         console.log(card, user, order);
         let resp = await order.Checkout(user, card);
-
+        console.log(resp);
+        store.commit('setCardErrors', resp.errors);
         store.commit('setOnLoad', false);
 
     }

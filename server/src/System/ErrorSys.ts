@@ -70,6 +70,7 @@ export class ErrorSys {
 	public declare(keyErrorList: string[]) {
 		for (let i = 0; i < keyErrorList.length; i++) {
 			this.errorDeclareList[keyErrorList[i]] = null;
+			this.errorList[keyErrorList[i]] = null;
 		}
 	}
 

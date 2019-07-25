@@ -34,7 +34,7 @@
               <div class="columns">
                 <div class="column col-6 col-order">
                   <div class="card-caption-1">Оформление заказа</div>
-                  <div class="form-group">
+                  <div v-bind:class="{ 'has-error': errors['empty_user_name'] }" class="form-group">
                     <label class="form-label">Ваше имя:</label>
                     <input v-model='user.name' class="form-input" type="text" />
                   </div>
@@ -165,6 +165,9 @@ export default {
     },
     user() {
       return this.$store.state.user;
+    },
+    errors() {
+      return this.$store.state.cardErrors;
     }
   }, // computed
 

@@ -26,6 +26,16 @@ class OrderController extends BaseController {
     public async Checkout() {
         console.log('Api Checkout page');
         let order = new Order();
+
+        this.req.sys.errorSys.declare([
+            'empty_card',
+            'empty_user',
+            'empty_order',
+            'empty_user_name',
+            'empty_user_phone',
+            'empty_card',
+            'empty_card',
+        ]);
         try {
 
             if (!this.req.body['card']) {
@@ -68,9 +78,15 @@ class OrderController extends BaseController {
             order.user = user;
             await this.connection.manager.save(order);
 
-            /* ищем продукты в DB */
-            let products = await this.connection.manager.findByIds(Product, [1, 2, 3]);
+            let productsArr = []; // массив id
+            let productsCountArr: any = {}; // массив кол-ва
+            for (let i = 0; i < this.req.body['card']['products'].length; i++) {
+                productsArr.push(this.req.body['card']['products'][i]['id']);
+                productsCountArr[this.req.body['card']['products'][i]['id']] = this.req.body['card']['products'][i]['count'];
+            }
 
+            /* ищем продукты в DB */
+            let products = await this.connection.manager.findByIds(Product, productsArr);
 
             /* Соддаем список продуктов заказа */
             let orderProducts: OrderProduct[] = [];
@@ -80,6 +96,7 @@ class OrderController extends BaseController {
                 orderProduct.product = products[i];
                 orderProduct.order = order;
                 orderProduct.price = products[i].price;
+                orderProduct.count = productsCountArr[products[i].id];
                 orderProducts.push(orderProduct);
             }
 
@@ -91,7 +108,7 @@ class OrderController extends BaseController {
         }
 
         this.resp.send(
-            this.responseSys.response(order, 'Катлог обновлен')
+            this.responseSys.response(order, 'Заказ оформлен')
         );
 
     }

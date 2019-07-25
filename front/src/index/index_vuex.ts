@@ -20,7 +20,8 @@ export const store = {
         showMsgModal: '',
         phone: window.phone,
         showCard: false,
-        onLoad: false
+        onLoad: false,
+        cardErrors: []
 
     },
     mutations: {
@@ -41,6 +42,9 @@ export const store = {
         },
         setOnLoad(state: any, data: any) {
             state.onLoad = data;
+        },
+        setCardErrors(state: any, data: any) {
+            state.cardErrors = data;
         },
     }
 };
