@@ -36,38 +36,62 @@
                   <div class="card-caption-1">Оформление заказа</div>
                   <div v-bind:class="{ 'has-error': errors['empty_user_name'] }" class="form-group">
                     <label class="form-label">Ваше имя:</label>
-                    <input v-model='user.name' class="form-input" type="text" />
+                    <input v-model="user.name" class="form-input" type="text" />
                   </div>
-                  <div class="form-group">
+                  <div
+                    v-bind:class="{ 'has-error': errors['empty_user_phone'] }"
+                    class="form-group"
+                  >
                     <label class="form-label">Ваш телефон:</label>
-                    <input v-model='user.phone' class="form-input" type="text" />
+                    <input v-model="user.phone" class="form-input" type="text" />
                   </div>
                   <div class="form-group">
                     <label class="form-label">Город:</label>
-                    <input v-model='order.city' class="form-input" type="text" placeholder="Город" />
+                    <input v-model="order.city" class="form-input" type="text" placeholder="Город" />
                   </div>
                   <div class="form-group">
                     <label class="form-label">Адрес доставки:</label>
-                    <input v-model='order.deliveryAddress' class="form-input" type="text" placeholder="Адрес доставки" />
+                    <input
+                      v-model="order.deliveryAddress"
+                      class="form-input"
+                      type="text"
+                      placeholder="Адрес доставки"
+                    />
                   </div>
                   <div class="form-group">
                     <label class="form-label">День доставки:</label>
                     <label class="form-radio">
-                      <input v-model='order.deliveryDate' type="radio" value="day 1" name="gender" checked />
+                      <input
+                        v-model="order.deliveryDate"
+                        type="radio"
+                        value="day 1"
+                        name="gender"
+                        checked
+                      />
                       <i class="form-icon"></i> В этот день
                     </label>
                     <label class="form-radio">
-                      <input v-model='order.deliveryDate' type="radio" value="day 2" name="gender" />
+                      <input v-model="order.deliveryDate" type="radio" value="day 2" name="gender" />
                       <i class="form-icon"></i> или в этот
                     </label>
                   </div>
                   <div class="form-group">
                     <label class="form-label">Ваши пожелания ко времени доставки:</label>
-                    <input v-model='order.deliveryTimeComment' class="form-input" type="text" placeholder="Ваши пожелания ко времени доставки" />
+                    <input
+                      v-model="order.deliveryTimeComment"
+                      class="form-input"
+                      type="text"
+                      placeholder="Ваши пожелания ко времени доставки"
+                    />
                   </div>
                   <div class="form-group">
                     <label class="form-label">Комментарий к заказу:</label>
-                    <input v-model='order.comment' class="form-input" type="text" placeholder="Комментарий к заказу"/>
+                    <input
+                      v-model="order.comment"
+                      class="form-input"
+                      type="text"
+                      placeholder="Комментарий к заказу"
+                    />
                   </div>
                 </div>
                 <div class="column col-6 col-card">
@@ -89,7 +113,7 @@
                               <i class="icon icon-plus"></i>
                             </div>
                           </div>
-                          <div class="delete-button">
+                          <div v-on:click="()=>removeItem(item)" class="delete-button">
                             <i class="icon icon-delete"></i>
                           </div>
                         </div>
@@ -101,7 +125,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <div class="card-button text-center">
+            <div class="total-price">Итого: {{totalPrice}}</div>
+            <div class="card-button text-right">
               <button v-on:click="checkout" class="btn btn-primary btn-lg">Заказать</button>
             </div>
           </div>
@@ -146,8 +171,10 @@ export default {
     },
     checkout() {
       cardController.checkout();
+    },
+    removeItem(item) {
+      this.$store.state.card.removeItem(item.id);
     }
-    
   }, // methods
 
   computed: {
@@ -168,6 +195,9 @@ export default {
     },
     errors() {
       return this.$store.state.cardErrors;
+    },
+    totalPrice() {
+      return this.$store.state.card.getTotalPrice();
     }
   }, // computed
 

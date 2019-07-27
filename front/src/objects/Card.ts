@@ -16,8 +16,28 @@ export class Card {
     public products: CardProductI[];
 
     constructor() {
-        this.products = [];      
+        this.products = [];
     }
+
+    /**
+     * Цена общая
+     */
+    public getTotalPrice(): number {
+        let res = 0;
+        for (let i = 0; i < this.products.length; i++) {
+            res += this.products[i].count * this.products[i].price;
+        }
+        return res;
+    }
+
+    /**
+     * Очистить корзину
+     */
+    public clear() {
+        this.products = [];
+        this.save();
+    }
+
 
     public static Init() {
         let self = new Card;
@@ -36,8 +56,18 @@ export class Card {
         this.save();
     }
 
+    public removeItem(id: number) {
+        for (let i = 0; i < this.products.length; i++) {
+            if (this.products[i].id == id) {
+                this.products.splice(i, 1);
+            }
+        }
+
+        this.save();
+    }
+
     public add(product: CardProductI) {
-        
+
         let newP = true;
         for (let i = 0; i < this.products.length; i++) {
             if (this.products[i].id == product.id) {
@@ -76,7 +106,7 @@ export class Card {
                     count: card[i]['count']
                 })
             }
-        } catch (e) {           
+        } catch (e) {
             this.save();
         }
     }
@@ -84,7 +114,7 @@ export class Card {
     /**
      * Сохраняем товары в localStorage
      */
-    public save() {       
+    public save() {
         localStorage.setItem('card', JSON.stringify(this.products));
     }
 }

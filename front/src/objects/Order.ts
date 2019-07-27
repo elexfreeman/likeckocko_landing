@@ -26,15 +26,13 @@ export class Order extends BaseObject {
      * Оформить заказ
      */
     public async Checkout(user: User, card: Card) {
-
         this.ok = true;
 
         let resp = await this.axios.post(this.apiUrl + '/order/checkout', {
             user: user,
             card: card,
             order: this
-        })
-
+        });      
         return resp['data'];
     }
 

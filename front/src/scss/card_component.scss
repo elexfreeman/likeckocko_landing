@@ -57,6 +57,10 @@
     }
   }
 
+  .delete-button {
+    cursor: pointer;
+  }
+
   .cardModal {
     .modal-title {
       display: flex;
@@ -67,12 +71,14 @@
     }
 
     .modal-footer {
-      padding-left: 4rem;
-      padding-right: 4rem;
-      text-align: left;
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: space-evenly;
 
-      .card-button {
-        padding-top: 1rem;
+      .total-price {
+        text-align: left;
+        font-size: 1.3rem;
       }
     }
   }

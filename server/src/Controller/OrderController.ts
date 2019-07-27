@@ -61,7 +61,7 @@ class OrderController extends BaseController {
             if (!this.req.body['user']['phone']) {
                 this.req.sys.errorSys.error('empty_user_phone', 'Пустое телефон пользователя');
             }
-
+            console.log(this.req.body);
             if (!this.req.sys.errorSys.isOk()) {
                 throw 'err'
             }
@@ -73,8 +73,22 @@ class OrderController extends BaseController {
             await this.connection.manager.save(user);
 
             /* создаем заказ юзера */
+            if (this.req.body['order']['city']) {
+                order.city = this.req.body['order']['city'];
+            }
+            if (this.req.body['order']['comment']) {
+                order.comment = this.req.body['order']['comment'];
+            }
+            if (this.req.body['order']['deliveryAddress']) {
+                order.deliveryAddress = this.req.body['order']['deliveryAddress'];
+            }
+            if (this.req.body['order']['deliveryDate']) {
+                order.deliveryDate = this.req.body['order']['deliveryDate'];
+            }
+            if (this.req.body['order']['deliveryTimeComment']) {
+                order.deliveryTimeComment = this.req.body['order']['deliveryTimeComment'];
+            }
 
-            order.comment = 'comment';
             order.user = user;
             await this.connection.manager.save(order);
 
