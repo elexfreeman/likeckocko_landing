@@ -13,7 +13,7 @@ module.exports = {
     mode: "production", //режим сборки
     entry: entry, //объект с точками входа
     output: {
-        path: path.join(__dirname, 'deploy/'), //общий путь для выходных файлов
+        path: path.join(__dirname, '../server/public/'), //общий путь для выходных файлов
         filename: "js/[name].js" //в этом параметре мы индивидуально добавляем необходимую директорию перед именем файлов
     },
 
@@ -32,6 +32,7 @@ module.exports = {
 
         },
         modules: ['node_modules', 'src'], //папки доступные для сканирования
+        extensions: ['.tsx', '.ts', '.js']
     },
     resolveLoader: {
         modules: ['node_modules'],
@@ -39,64 +40,77 @@ module.exports = {
     },
     module: { //Загрузчики
         rules: [{
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: '/(node_modules|bower_components)/',
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: '/(node_modules|bower_components)/',
+            query: {
+                presets: ['@babel/preset-env'],
+                cacheDirectory: true
+            }
+        },
+        {
+            test: /\.vue$/,
+            loader: 'vue-loader',
+            options: {
+                loaders: {
+                    ts: 'ts-loader'
+                },
+                esModule: true
+            }
+        },
+        {
+            test: /\.scss$/,
+            use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+
+        },
+        {
+            test: /\.css$/,
+            use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+
+        },
+        {
+            test: /\.html$/,
+            use: [{
+                loader: 'html-loader',
+                options: {
+                    minimize: false,
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    attrs: ['img:src']
+                }
+            }]
+        },
+        {
+            test: /\.(jpg|png|gif)$/,
+            use: {
+                loader: 'file',
                 query: {
-                    presets: ['@babel/preset-env'],
-                    cacheDirectory: true
+                    useRelativePath: false,
+                    publicPath: '/vue_frontend/deploy/',
+                    name: 'images/[name].[ext]'
                 }
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            },
-            {
-                test: /\.scss$/,
-                use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
-
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
-
-            },
-            {
-                test: /\.html$/,
-                use: [{
-                    loader: 'html-loader',
-                    options: {
-                        minimize: false,
-                        removeComments: true,
-                        collapseWhitespace: true,
-                        attrs: ['img:src']
-                    }
-                }]
-            },
-            {
-                test: /\.(jpg|png|gif)$/,
-                use: {
-                    loader: 'file',
-                    query: {
-                        useRelativePath: false,
-                        publicPath: '/vue_frontend/deploy/',
-                        name: 'images/[name].[ext]'
-                    }
+            }
+        },
+        {
+            test: /\.(woff|woff2|eot|ttf|svg)$/,
+            use: {
+                loader: 'url',
+                options: {
+                    limit: 10000,
+                    publicPath: '',
+                    name: 'fonts/[name].[ext]'
                 }
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|svg)$/,
-                use: {
-                    loader: 'url',
-                    options: {
-                        limit: 10000,
-                        publicPath: '',
-                        name: 'fonts/[name].[ext]'
-                    }
-                }
-            },
-             // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-             { test: /\.tsx?$/, loader: "ts-loader" }
+            }
+        },
+        // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+        {
+            test: /\.tsx?$/,
+            loader: 'ts-loader',
+            options: {
+                configFile: 'tsconfig.json',
+                appendTsSuffixTo: [/\.vue$/]
+            }
+        },
         ]
     },
     plugins: [

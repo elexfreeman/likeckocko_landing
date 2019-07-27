@@ -125,7 +125,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <div class="total-price">Итого: {{totalPrice}}</div>
+            <div class="total-price">Итого: {{totalPrice}} руб.</div>
             <div class="card-button text-right">
               <button v-on:click="checkout" class="btn btn-primary btn-lg">Заказать</button>
             </div>

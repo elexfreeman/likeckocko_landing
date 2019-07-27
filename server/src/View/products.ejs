@@ -24,8 +24,14 @@
 
             </div>
             <div class="card-footer text-right">
-                <a class="btn btn-primary btn-lg" href="#cards">В корзину</a>
+                <div 
+                product_img="/img/<%= p.img %>" 
+                product_id='<%= p.id %>' 
+                product_caption='<%= p.caption %>' 
+                product_price='<%= p.price %>' 
+                class='cart-button'></div>
             </div>
+
         </div>
         <% }); %>
     </div>

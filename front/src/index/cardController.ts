@@ -1,5 +1,8 @@
 import store from './index_vuex';
 
+/**
+ * Оформление заказа
+ */
 export default class CardController {
 
     /**
@@ -51,7 +54,6 @@ export default class CardController {
 
         let order = store.state.order;
 
-        console.log(card, user, order);
         let resp = await order.Checkout(user, card);
         store.commit('setCardErrors', resp.errors);
         if (resp.ok) {
@@ -67,11 +69,7 @@ export default class CardController {
 
         }
 
-
-
     }
-
-
 
 }
 

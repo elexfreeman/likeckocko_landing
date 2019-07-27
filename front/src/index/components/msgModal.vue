@@ -1,5 +1,5 @@
 <template>
-  <div class="msgModal">    
+  <div class="msgModal">
     <div v-bind:class="{'active': showMsgModal}" class="modal" id="modal-id">
       <div class="modal-container">
         <div class="modal-header">
@@ -7,7 +7,7 @@
           <div class="modal-title h5"></div>
         </div>
         <div class="modal-body">
-          <div class="text-center" style="font-size: 1.5rem;">{{showMsgModal}}</div>
+          <div class="showMsgModal text-center">{{showMsgModal}}</div>
         </div>
       </div>
     </div>
@@ -32,7 +32,6 @@ export default {
 
   computed: {
     showMsgModal() {
-      console.log(this.$store.state.showMsgModal);
       return this.$store.state.showMsgModal;
     }
   }, // computed
