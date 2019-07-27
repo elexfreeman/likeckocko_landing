@@ -1,4 +1,10 @@
 .card_component {
+
+  .error-msg-footer{
+    color:red;
+    text-align: left;
+  }
+
   .col-order {
     border-right: 1px solid #ddd;
   }
@@ -70,7 +76,7 @@
       }
     }
 
-    .modal-footer {
+    .card-footer {
       display: flex;
       flex-flow: row wrap;
       align-items: center;

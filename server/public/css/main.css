@@ -2949,7 +2949,8 @@ a.text-error:visited {
     transform: translate(-50%, -40%) rotate(-135deg);
     width: .5em; }
 .top-container {
-  padding-top: 2rem; }
+  padding-top: 2rem;
+  padding-bottom: 2rem; }
 .top-container h1 {
     text-align: center;
     color: #493d34;
@@ -2966,11 +2967,15 @@ a.text-error:visited {
       width: 16rem;
       margin: 0 auto;
       display: block; }
+.msgModal .showMsgModal {
+  font-size: 1.5rem;
+  padding-bottom: 1rem; }
 .main-content {
   padding-top: 4rem; }
 .delivery {
   background-color: #f0f0f0;
-  padding-bottom: 3rem; }
+  padding-bottom: 3rem;
+  padding-top: 3rem; }
 .delivery h2 {
     text-align: center;
     font-size: 1rem;

@@ -49,6 +49,7 @@ export default class CardController {
      */
     public async checkout() {
         store.commit('setOnLoad', true);
+        store.commit('setCardFormError', false);
         let card = store.state.card;
         let user = store.state.user;
 
@@ -67,6 +68,9 @@ export default class CardController {
                 store.commit('setShowMsgModal', null);
             }, 4000)
 
+        } else {
+            store.commit('setCardFormError', true);
+            
         }
 
     }

@@ -21,7 +21,8 @@ export const store = {
         phone: window.phone,
         showCard: false,
         onLoad: false,
-        cardErrors: []
+        cardErrors: [],
+        cardFormError: false
 
     },
     mutations: {
@@ -45,6 +46,9 @@ export const store = {
         },
         setCardErrors(state: any, data: any) {
             state.cardErrors = data;
+        },
+        setCardFormError(state: any, data: any) {
+            state.cardFormError = data;
         },
     }
 };

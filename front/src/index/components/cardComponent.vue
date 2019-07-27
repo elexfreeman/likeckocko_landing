@@ -32,7 +32,7 @@
           <div class="modal-body">
             <div class="content">
               <div class="columns">
-                <div class="column col-6 col-order">
+                <div class="column col-sm-12 col-6 col-order">
                   <div class="card-caption-1">Оформление заказа</div>
                   <div v-bind:class="{ 'has-error': errors['empty_user_name'] }" class="form-group">
                     <label class="form-label">Ваше имя:</label>
@@ -94,7 +94,7 @@
                     />
                   </div>
                 </div>
-                <div class="column col-6 col-card">
+                <div class="column col-sm-12 col-6 col-card">
                   <div class="card-caption-1">Корзина</div>
                   <div v-bind:key="index" v-for="(item, index) in card.products">
                     <div class="columns card-list">
@@ -125,9 +125,12 @@
             </div>
           </div>
           <div class="modal-footer">
-            <div class="total-price">Итого: {{totalPrice}} руб.</div>
-            <div class="card-button text-right">
-              <button v-on:click="checkout" class="btn btn-primary btn-lg">Заказать</button>
+            <div v-if="cardFormError" class="error-msg-footer">Заполненны не все поля</div>
+            <div class="card-footer">
+              <div class="total-price">Итого: {{totalPrice}} руб.</div>
+              <div class="card-button text-right">
+                <button v-on:click="checkout" class="btn btn-primary btn-lg">Заказать</button>
+              </div>
             </div>
           </div>
         </div>
@@ -195,6 +198,9 @@ export default {
     },
     errors() {
       return this.$store.state.cardErrors;
+    },
+    cardFormError() {
+      return this.$store.state.cardFormError;
     },
     totalPrice() {
       return this.$store.state.card.getTotalPrice();
