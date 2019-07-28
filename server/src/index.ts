@@ -42,6 +42,10 @@ app.use(IndexController.router);
 import * as OrderController from './Controller/OrderController';
 app.use(OrderController.router);
 
+// Страница товара
+import * as ProductController from './Controller/ProductController';
+app.use(ProductController.router);
+
 
 console.log('server start at http://localhost:3005');
 app.listen(3005);

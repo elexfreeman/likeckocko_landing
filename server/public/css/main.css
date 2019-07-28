@@ -2995,6 +2995,9 @@ a.text-error:visited {
     font-size: 1rem; }
 .contacts .soc {
     padding-top: 1rem; }
+@media (max-width: 580px) {
+  .delivery .delivery-info {
+    font-size: 1rem; } }
 .products {
   display: flex;
   flex-flow: row wrap;
@@ -3020,6 +3023,9 @@ a.text-error:visited {
     transition: opacity 0.3s; }
 .product:hover .img-2 {
   opacity: 1; }
+.card_component .error-msg-footer {
+  color: red;
+  text-align: left; }
 .card_component .col-order {
   border-right: 1px solid #ddd; }
 .card_component .col-card,
@@ -3062,12 +3068,12 @@ a.text-error:visited {
 .card_component .cardModal .modal-title .card-ico {
     width: 1.5rem;
     margin-right: 0.5rem; }
-.card_component .cardModal .modal-footer {
+.card_component .cardModal .card-footer {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-evenly; }
-.card_component .cardModal .modal-footer .total-price {
+.card_component .cardModal .card-footer .total-price {
     text-align: left;
     font-size: 1.3rem; }
 .card_component .card-img {
@@ -3109,5 +3115,46 @@ a.text-error:visited {
       display: none; }
     .card_component .cardModal .modal-footer .phone-input-m {
       width: auto;
-      padding-right: 1rem; } }
+      padding-right: 1rem; }
+  .card_component .modal-container {
+    max-height: 87vh; } }
+.product-page {
+  padding-bottom: 2rem;
+  padding-top: 3rem; }
+.product-page h1 {
+    font-size: 1.5rem; }
+.product-page .price {
+    padding-bottom: 1rem;
+    font-size: 1rem; }
+.product-page .card-image {
+    height: 500px; }
+.product-page .product-img:hover .img-2 {
+    opacity: 1; }
+.product-page .card-button {
+    padding-bottom: 1rem; }
+.product-page .p-img {
+    width: 500px; }
+.product-page .img-2 {
+    position: relative;
+    top: -500px;
+    opacity: 0;
+    transition: opacity 0.3s; }
+.product-page .page-logo-top img {
+    margin: 0 auto;
+    width: 7rem;
+    display: block; }
+@media (max-width: 580px) {
+  .product-page .card-image {
+    height: 80vw; }
+  .product-page .p-img {
+    width: 80vw;
+    display: block;
+    margin: 0 auto; }
+  .product-page .img-2 {
+    top: -80vw;
+    display: block;
+    margin: 0 auto; }
+  .product-page h1 {
+    font-size: 1rem;
+    padding-top: 1rem; } }
 

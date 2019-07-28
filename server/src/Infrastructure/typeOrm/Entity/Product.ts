@@ -17,6 +17,9 @@ export class Product {
     @Column({ type: "varchar", length: 400, nullable: true })
     img: string;
 
+    @Column({ type: "varchar", length: 400, nullable: true })
+    url: string;
+
     @Column({ type: 'decimal', default: 0, precision: 10, scale: 2 })
     price: number;
 

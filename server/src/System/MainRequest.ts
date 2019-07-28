@@ -5,6 +5,8 @@ export default interface MainRequest {
     headers: { [key: string]: any };
     body: any;
     method: string;
+    baseUrl: string;
+    params: {[s: string]: string};
     sys: {
         apikey: string, 
         bAuth: boolean, /* флаг авторизации */
