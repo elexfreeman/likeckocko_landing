@@ -2,16 +2,18 @@
     <div class="products">
         <% products.forEach(function(p) { %>
         <div class="card product">
-            <div class="card-image">
-                <img class="p-img img-1" src="/img/<%= p.img %>" alt="<%= p.caption %>">
-                <img class="p-img img-2" src="/img/<%= p.bgImg() %>" alt="<%= p.caption %>">
-            </div>
+            <a href="/<%= p.url %>">
+                <div class="card-image">
+                    <img class="p-img img-1" src="/img/<%= p.img %>" alt="<%= p.caption %>">
+                    <img class="p-img img-2" src="/img/<%= p.bgImg() %>" alt="<%= p.caption %>">
+                </div>
+            </a>
             <div class="card-header">
-                <div class="card-title h5"><%= p.caption %> <%= p.getUrl() %></div>
+                <div class="card-title h5"><%= p.caption %></div>
                 <div class="card-subtitle text-gray"><%= p.description %></div>
             </div>
             <div class="card-body">
-              <!--   Состав:
+                <!--   Состав:
                 <ul>
                     <li><b>Какао</b>: 30%</li>
                     <li><b>Орехи</b>: 30%</li>
@@ -24,12 +26,8 @@
 
             </div>
             <div class="card-footer text-right">
-                <div 
-                product_img="/img/<%= p.img %>" 
-                product_id='<%= p.id %>' 
-                product_caption='<%= p.caption %>' 
-                product_price='<%= p.price %>' 
-                class='cart-button'></div>
+                <div product_img="/img/<%= p.img %>" product_id='<%= p.id %>' product_caption='<%= p.caption %>'
+                    product_price='<%= p.price %>' class='cart-button'></div>
             </div>
 
         </div>
