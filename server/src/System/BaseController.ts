@@ -3,6 +3,8 @@ import orm from "../Infrastructure/typeOrm/Connect";
 import { ErrorSys } from './ErrorSys';
 import { ResponseSys } from './ResponseSys';
 
+import config from '../Configs/config';
+
 /**
  * Контроллер 
  */
@@ -19,6 +21,7 @@ export default class BaseController {
     constructor(req: MainRequest, resp: any) {
         this.req = req;
         this.resp = resp;
+        this.req.apiUrl = config.apiUrl;
         this.responseSys = req.sys.responseSys;
     }
 

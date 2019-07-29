@@ -22,6 +22,7 @@ export const config = {
     "port": 3005
   },
   protocol: 'http://',
+  apiUrl: 'http://localhost:3005',
   mysql: {
     "client": "mysql",
     "connection": {

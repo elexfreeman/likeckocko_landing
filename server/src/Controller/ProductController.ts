@@ -28,7 +28,11 @@ class ProductController extends BaseController {
         if (!product) {
             this.resp.status(404).redirect("/")
         } else {
-            this.resp.render('product_page', { page: "Главная", product: product });
+            this.resp.render('product_page', { 
+                page: "Главная", 
+                product: product ,
+                apiUrl: this.req.apiUrl
+            });
         }
 
     }

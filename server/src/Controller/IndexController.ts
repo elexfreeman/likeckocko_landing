@@ -10,12 +10,12 @@ const router = express.Router();
 /**
  * Контроллер 
  */
-class IndexController extends BaseController {  
+class IndexController extends BaseController {
 
     constructor(req: MainRequest, resp: any) {
         super(req, resp);
-        console.log('IndexController');       
-    }  
+        console.log('IndexController');
+    }
 
     /**
      * index page
@@ -23,7 +23,11 @@ class IndexController extends BaseController {
     public async Index() {
         console.log('index page');
         const products = await this.connection.manager.find(Product);
-        this.resp.render('index', { page: "Главная", products: products });
+        this.resp.render('index', {
+            page: "Главная",
+            products: products,
+            apiUrl: this.req.apiUrl
+        });
     }
 
 }
@@ -32,7 +36,7 @@ class IndexController extends BaseController {
  * Индексная страница
  */
 router.get('/', async (req: any, res: any, next) => {
-    const self = <IndexController> await IndexController.Init(req, res);
+    const self = <IndexController>await IndexController.Init(req, res);
     self.Index();
 });
 
