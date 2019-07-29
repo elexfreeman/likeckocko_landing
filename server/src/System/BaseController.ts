@@ -3,7 +3,7 @@ import orm from "../Infrastructure/typeOrm/Connect";
 import { ErrorSys } from './ErrorSys';
 import { ResponseSys } from './ResponseSys';
 
-import config from '../Configs/config';
+import { config } from '../Configs/config';
 
 /**
  * Контроллер 
