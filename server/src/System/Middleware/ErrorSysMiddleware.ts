@@ -8,7 +8,7 @@ export default function ErrorSysMiddleware(request: MainRequest, response: any, 
     request.sys = {
         apikey: '',
         errorSys: null,
-        
+        seo: null,
         responseSys: null,
         bAuth: false
     }

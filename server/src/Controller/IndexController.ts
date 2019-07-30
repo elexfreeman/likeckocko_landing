@@ -24,6 +24,7 @@ class IndexController extends BaseController {
         console.log('index page');
         const products = await this.connection.manager.find(Product);
         this.resp.render('index', {
+            seo: this.req.sys.seo,
             page: "Главная",
             products: products,
             apiUrl: this.req.apiUrl

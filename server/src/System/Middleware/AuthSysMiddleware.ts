@@ -16,8 +16,5 @@ export default async function AuthSysMiddleware(request: MainRequest, response: 
     // Инициализируем систему для пользователей
     //await userSys.init();
 
-  
-
-
     next();
 }

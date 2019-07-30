@@ -25,6 +25,9 @@ app.use(ErrorSysMiddleware);
 import RequestSysMiddleware from './System/Middleware/RequestSysMiddleware'
 app.use(RequestSysMiddleware);
 
+import SeoMiddleware from './System/Middleware/SeoMiddleware'
+app.use(SeoMiddleware);
+
 import ResponseSysMiddleware from './System/Middleware/ResponseSysMiddleware'
 app.use(ResponseSysMiddleware);
 

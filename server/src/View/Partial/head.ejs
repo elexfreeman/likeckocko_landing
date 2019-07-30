@@ -1,16 +1,28 @@
 </body>
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="shortcut icon" href="favicon/favicon.ico">
-    <link rel="stylesheet" href="/css/main.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Заголовок | Проект</title>
-  </head>
-  <body>
+  <link rel="shortcut icon" href="favicon/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
 
-      <div id="msg_modal"></div>
-      <div id="card"></div>
+  <title><%= seo.title %></title>
+  <meta name="description" content="<%= seo.description %>" />
+  <meta name="keywords" content="<%= seo.keywords %>" />
+
+  <meta property="og:type" content="<%= seo.og.type %>">
+  <meta property="og:site_name" content="<%= seo.og.site_name %>">
+  <meta property="og:title" content="<%= seo.og.title %>">
+  <meta property="og:description" content="<%= seo.og.description %>">
+  <meta property="og:url" content="<%= seo.og.url %>">
+  <meta property="og:image" content="<%= seo.og.image %>" />
+  <meta property="og:image:type" content="<%= seo.og.imageType %>">
+</head>
+
+<body>
+
+  <div id="msg_modal"></div>
+  <div id="card"></div>

@@ -28,11 +28,16 @@ class ProductController extends BaseController {
         if (!product) {
             this.resp.status(404).redirect("/")
         } else {
+            this.req.sys.seo.title = 'Likechoco | '+ product.caption;
+            this.req.sys.seo.reload();
+
             this.resp.render('product_page', { 
+                seo: this.req.sys.seo,
                 page: "Главная", 
                 product: product ,
                 apiUrl: this.req.apiUrl
             });
+
         }
 
     }
