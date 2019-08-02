@@ -3008,6 +3008,9 @@ a.text-error:visited {
   margin-bottom: 2rem;
   margin-left: 10px;
   margin-right: 10px; }
+.product .card-subtitle {
+    height: 4rem;
+    overflow: hidden; }
 .product .card-image {
     height: 400px;
     cursor: pointer; }

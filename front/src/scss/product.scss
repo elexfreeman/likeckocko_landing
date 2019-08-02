@@ -12,6 +12,11 @@
   margin-left: 10px;
   margin-right: 10px;
 
+  .card-subtitle {
+    height: 4rem;
+    overflow: hidden;   
+  }
+
   .card-image {
     height: 400px;
     cursor: pointer;
