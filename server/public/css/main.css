@@ -3083,6 +3083,7 @@ a.text-error:visited {
   display: flex; }
 .card_component .cardModal .modal-title .card-ico {
     width: 1.5rem;
+    height: 1.5rem;
     margin-right: 0.5rem; }
 .card_component .cardModal .card-footer {
   display: flex;
