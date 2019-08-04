@@ -2970,6 +2970,10 @@ a.text-error:visited {
 .msgModal .showMsgModal {
   font-size: 1.5rem;
   padding-bottom: 1rem; }
+@media (max-width: 580px) {
+  .top-container .top-logo img {
+    width: 50vw;
+    margin: 0 auto; } }
 .main-content {
   padding-top: 4rem; }
 .delivery {
@@ -2996,6 +3000,8 @@ a.text-error:visited {
 .contacts .soc {
     padding-top: 1rem; }
 @media (max-width: 580px) {
+  .main-content {
+    padding-top: 0; }
   .delivery .delivery-info {
     font-size: 1rem; } }
 .products {
@@ -3026,6 +3032,13 @@ a.text-error:visited {
     transition: opacity 0.3s; }
 .product:hover .img-2 {
   opacity: 1; }
+@media (max-width: 580px) {
+  .product {
+    width: 100%; }
+    .product .p-img {
+      width: 100%; }
+    .product .img-2 {
+      display: none; } }
 .card_component .error-msg-footer {
   color: red;
   text-align: left; }

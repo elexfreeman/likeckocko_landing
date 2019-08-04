@@ -33,3 +33,15 @@
     padding-bottom: 1rem;
   }
 }
+
+
+@media (max-width: 580px) {
+  .top-container {
+    .top-logo{
+      img {
+        width: 50vw;
+        margin: 0 auto;
+      }
+    }
+  }
+}

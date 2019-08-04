@@ -44,3 +44,17 @@
     opacity: 1;
   }
 }
+
+
+
+@media (max-width: 580px) {
+  .product {
+    width: 100%;
+    .p-img {
+      width: 100%;
+    }
+    .img-2{
+      display: none;
+    }
+  }
+}

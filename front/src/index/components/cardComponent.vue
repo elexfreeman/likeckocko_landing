@@ -2,12 +2,11 @@
   <div class="card_component">
     <div class="card_menu">
       <div class="columns">
-        <div class="column col-4 col-sm-6 phone-col">
+        <div class="column col-4 col-sm-10 phone-col">
           <img class="phone-ico" src="/img/phone-ico.png" />
           <span>{{phone}}</span>
         </div>
-        <div class="column col-sm-2"></div>
-        <div class="column col-4 text-right card-col">
+        <div class="column col-4 col-sm-2 text-right card-col">
           <img
             v-if="card.products.length > 0"
             v-on:click="onShowCard"
