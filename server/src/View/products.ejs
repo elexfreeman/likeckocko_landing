@@ -9,16 +9,18 @@
                 </div>
             </a>
             <div class="card-header">
-                <div class="card-title h5"><%= p.caption %></div>
-                <div class="card-subtitle text-gray"><%- p.description %></div>
+                <div class="card-title h5">
+                    <a href="/<%= p.url %>">
+                        <%= p.caption %>
+                    </a>
+                </div>
+                <div class="card-subtitle text-gray">
+                    <a href="/<%= p.url %>">
+                        <%- p.description %>
+                    </a>
+                </div>
             </div>
             <div class="card-body">
-                <!--   Состав:
-                <ul>
-                    <li><b>Какао</b>: 30%</li>
-                    <li><b>Орехи</b>: 30%</li>
-                    <li><b>Сухое молоко</b>: 30%</li>
-                </ul> -->
 
                 <div class="price">
                     Цена: <b><%= p.price %></b> руб.
