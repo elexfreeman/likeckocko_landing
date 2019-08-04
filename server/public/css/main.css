@@ -3035,6 +3035,8 @@ a.text-error:visited {
 @media (max-width: 580px) {
   .product {
     width: 100%; }
+    .product .card-image {
+      height: auto; }
     .product .p-img {
       width: 100%; }
     .product .img-2 {

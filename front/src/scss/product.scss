@@ -50,6 +50,10 @@
 @media (max-width: 580px) {
   .product {
     width: 100%;
+
+    .card-image{
+      height: auto;
+    }
     .p-img {
       width: 100%;
     }
