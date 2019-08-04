@@ -3091,7 +3091,8 @@ a.text-error:visited {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-evenly; }
+  justify-content: space-evenly;
+  padding-top: 2rem; }
 .card_component .card-footer .total-price {
     text-align: left;
     font-size: 1.3rem; }
