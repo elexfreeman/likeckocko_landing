@@ -1,7 +1,6 @@
 .card_component {
-
-  .error-msg-footer{
-    color:red;
+  .error-msg-footer {
+    color: red;
     text-align: left;
   }
 
@@ -67,26 +66,24 @@
     cursor: pointer;
   }
 
-  .cardModal {
-    .modal-title {
-      display: flex;
-      .card-ico {
-        width: 1.5rem;
-        height: 1.5rem;
-        margin-right: 0.5rem;
-      }
+  .modal-title {
+    display: flex;
+    .card-ico {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 0.5rem;
     }
+  }
 
-    .card-footer {
-      display: flex;
-      flex-flow: row wrap;
-      align-items: center;
-      justify-content: space-evenly;
+  .card-footer {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
 
-      .total-price {
-        text-align: left;
-        font-size: 1.3rem;
-      }
+    .total-price {
+      text-align: left;
+      font-size: 1.3rem;
     }
   }
 
@@ -131,7 +128,6 @@
       cursor: pointer;
     }
   }
-
 }
 
 @media (max-width: 580px) {
@@ -156,7 +152,7 @@
         }
       }
     }
-    .modal-container{
+    .modal-container {
       max-height: 87vh;
     }
   }

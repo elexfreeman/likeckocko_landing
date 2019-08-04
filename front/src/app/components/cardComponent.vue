@@ -7,12 +7,15 @@
           <span>{{phone}}</span>
         </div>
         <div class="column col-4 col-sm-2 text-right card-col">
-          <img
+          <!--  <img
             v-if="card.products.length > 0"
             v-on:click="onShowCard"
             class="card-ico"
             src="/img/card-ico.png"
-          />
+          />-->
+          <a href="/cart">
+            <img v-if="card.products.length > 0" class="card-ico" src="/img/card-ico.png" />
+          </a>
         </div>
       </div>
     </div>

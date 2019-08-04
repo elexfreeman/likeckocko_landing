@@ -3,6 +3,7 @@ import Vue from 'vue';
 import toCard from "./components/toCard.vue";
 import msgModal from "./components/msgModal.vue";
 import cardComponent from "./components/cardComponent.vue";
+import cartPage from "./components/cartPage.vue";
 
 import store from './index_vuex';
 import {Card} from '../objects/Card';
@@ -50,3 +51,14 @@ new Vue({
   store: store,
   render: h => h(cardComponent)
 });    
+
+let cart_page = document.getElementById('cart_page');
+if (cart_page) {
+  
+new Vue({
+  el: '#cart_page',
+  data: {},
+  store: store,
+  render: h => h(cartPage)
+});    
+}

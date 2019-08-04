@@ -45,9 +45,15 @@ app.use(IndexController.router);
 import * as OrderController from './Controller/OrderController';
 app.use(OrderController.router);
 
-// Страница товара
+// Страница корзины
+import * as CartController from './Controller/CartController';
+app.use(CartController.router);
+
+
+// Страница товара (должна быть самой поседней в подкл)
 import * as ProductController from './Controller/ProductController';
 app.use(ProductController.router);
+
 
 
 console.log('server start at http://localhost:3005');

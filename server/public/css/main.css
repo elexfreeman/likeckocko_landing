@@ -3081,18 +3081,18 @@ a.text-error:visited {
     border-radius: 50%; }
 .card_component .delete-button {
   cursor: pointer; }
-.card_component .cardModal .modal-title {
+.card_component .modal-title {
   display: flex; }
-.card_component .cardModal .modal-title .card-ico {
+.card_component .modal-title .card-ico {
     width: 1.5rem;
     height: 1.5rem;
     margin-right: 0.5rem; }
-.card_component .cardModal .card-footer {
+.card_component .card-footer {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-evenly; }
-.card_component .cardModal .card-footer .total-price {
+.card_component .card-footer .total-price {
     text-align: left;
     font-size: 1.3rem; }
 .card_component .card-img {

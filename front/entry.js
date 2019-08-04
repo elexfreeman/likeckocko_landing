@@ -1,5 +1,5 @@
 module.exports = {
-    'index': './src/index/index.ts',
+    'index': './src/app/index.ts',
     'main': './src/scss/style.scss',
 }
 
