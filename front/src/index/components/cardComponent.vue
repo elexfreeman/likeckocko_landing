@@ -2,7 +2,7 @@
   <div class="card_component">
     <div class="card_menu">
       <div class="columns">
-        <div class="column col-4 col-sm-10 phone-col">
+        <div class="column col-8 col-sm-10 phone-col">
           <img class="phone-ico" src="/img/phone-ico.png" />
           <span>{{phone}}</span>
         </div>
