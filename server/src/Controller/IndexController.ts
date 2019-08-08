@@ -37,6 +37,7 @@ class IndexController extends BaseController {
     public async Robots() {
         console.log('Robots page');
         const products = await this.connection.manager.find(Product);
+        this.resp.header("Content-Type", "text/plain");
         this.resp.render('robots', {
             seo: this.req.sys.seo,
             page: "Главная",
