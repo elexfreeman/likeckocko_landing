@@ -31,6 +31,21 @@ class IndexController extends BaseController {
         });
     }
 
+    /**
+     * index page
+     */
+    public async Robots() {
+        console.log('Robots page');
+        const products = await this.connection.manager.find(Product);
+        this.resp.render('robots', {
+            seo: this.req.sys.seo,
+            page: "Главная",
+            products: products,
+            apiUrl: this.req.apiUrl,
+            Host: this.req['headers']['host']
+        });
+    }
+
 }
 
 /**
@@ -39,6 +54,15 @@ class IndexController extends BaseController {
 router.get('/', async (req: any, res: any, next) => {
     const self = <IndexController>await IndexController.Init(req, res);
     self.Index();
+});
+
+/**
+ * Индексная страница
+ */
+router.get('/robots.txt', async (req: any, res: any, next) => {
+    console.log(req);
+    const self = <IndexController>await IndexController.Init(req, res);
+    self.Robots();
 });
 
 
