@@ -14,6 +14,7 @@ class IndexController extends BaseController {
 
     constructor(req: MainRequest, resp: any) {
         super(req, resp);
+        //test
         console.log('IndexController');
     }
 
