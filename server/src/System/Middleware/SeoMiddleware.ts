@@ -1,16 +1,17 @@
-import MainRequest from '../MainRequest';
-import { Seo } from '../../Components/Seo';
-import { config } from '../../Configs/config';
+import { System } from '@a-a-game-studio/aa-core/lib';
+import { ChockoSeo } from '../../Components/ChockoSeo';
+const config = require('../../Configs/MainConfig.js');
+
 /**
  * Сео параметры
- * @param request 
+ * @param req 
  * @param response 
  * @param next 
  */
-export default function SeoMiddleware(request: MainRequest, response: any, next: any) {
+export default function SeoMiddleware(req: System.MainRequest.MainRequest, resp: any, next: any) {
 
-    if (request.method == 'GET') {
-        request.sys.seo = new Seo(request, config);
+    if (req.method == 'GET') {
+        req.seo = new ChockoSeo(req, config);
     }
 
     next();

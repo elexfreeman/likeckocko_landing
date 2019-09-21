@@ -1,12 +1,13 @@
 {
   "name": "core",
   "version": "0.0.1",
-  "description": "Ядро для СП",
-  "author": "63pokupki.ru",
-  "license": "UNLICENSED",
+  "description": "LikeChocko-backend",
+  "author": "elex",
+  "license": "BSD-3-Clause",
   "private": true,
   "main": "./src/index.ts",
   "dependencies": {
+    "@a-a-game-studio/aa-core": "^1.0.9",
     "@types/chai": "^4.2.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
@@ -15,7 +16,7 @@
     "csv": "^5.1.1",
     "ejs": "^2.6.2",
     "express": "^4.16.4",
-    "knex": "^0.18.0",
+    "knex": "^0.19.3",
     "lodash": "^4.17.11",
     "md5": "^2.2.1",
     "mocha": "^5.2.0",
@@ -54,6 +55,7 @@
     "watch": "./node_modules/.bin/nodemon -e ts -w ./src -x npm run watch:serve",
     "watch:serve": "./node_modules/.bin/ts-node ./src/index.ts",
     "lint": "./node_modules/.bin/eslint --ext .ts,.js src/",
-    "t-dev": "./node_modules/.bin/ts-node"
+    "t-dev": "./node_modules/.bin/ts-node",
+    "runDefMigration": "./node_modules/.bin/ts-node ./src/runDefMigration.ts"
   }
 }

@@ -1,60 +1,49 @@
-import * as express from 'express';
+import { App, Middleware, System, User } from '@a-a-game-studio/aa-core/lib';
+import * as AAClasses from '@a-a-game-studio/aa-classes/lib';
+const config = require('./Configs/MainConfig.js');
 const path = require('path');
-const app = express();
-
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ limit: '50mb',extended: true }));
-app.use(bodyParser.json());
-
-const cors = require('cors');
-/*для подкл к API*/
-app.use(cors());
-app.options('*', cors());
-
-
-app.use(express.static('./public'));
-
-app.set('views', path.join(__dirname, '/View'));
-app.set('view engine', 'ejs');
-
-
-/* LEGO ошибок */
-import ErrorSysMiddleware from './System/Middleware/ErrorSysMiddleware'
-app.use(ErrorSysMiddleware);
-
-import RequestSysMiddleware from './System/Middleware/RequestSysMiddleware'
-app.use(RequestSysMiddleware);
 
 import SeoMiddleware from './System/Middleware/SeoMiddleware'
-app.use(SeoMiddleware);
+import { ChockoListDBI } from './Module/ChockoListDB';
 
-import ResponseSysMiddleware from './System/Middleware/ResponseSysMiddleware'
-app.use(ResponseSysMiddleware);
+const app = new App(config)
+    .fUseMySql();
 
-/* проверка авторизации на уровне приложения */
-import AuthSysMiddleware from './System/Middleware/AuthSysMiddleware'
-app.use(AuthSysMiddleware);
+/* Ф-я запуска приложения */
+async function faRunServer() {
+    console.log('Starting App...');
+
+    /* модули доступа к данным */
+    const listDBData: ChockoListDBI = {
+        userDB: new User.UserSQL(app.errorSys, app.objDb),
+        walletDB: new AAClasses.WalletModule.WalletDB(app.errorSys),
+        fileDB: new AAClasses.FileModule.FileDB(app.errorSys),
+    }
+
+    const authSysMiddleware = new Middleware.AuthSysMiddleware(listDBData);
+    app.objExpress.use(SeoMiddleware);
+
+    await app.faInstall();
+
+    app.fDisableCors() // отключаем cors
+        .fUseBodyParser() // используем дефолтный BodyParser
+        .fUseReddis()
+        .fUseStatic('./public')
+        .fUseViews(path.join(__dirname, '/View'))
+        ;
+
+    /* Иницализируем модуль аторизации */
+    await app.faUseAuthSys(authSysMiddleware);
+
+    app.fUseAdminUser() // Контролер администрирования пользователей
+        .fUseUserCtrl() // Контролер пользователя
+        .fStart(); // Запускаем приложение
+
+} // faRunServer
+
+faRunServer();
 
 
 
-// Базовый модуль
-import * as IndexController from './Controller/IndexController';
-app.use(IndexController.router);
-
-// Базовый модуль
-import * as OrderController from './Controller/OrderController';
-app.use(OrderController.router);
-
-// Страница корзины
-import * as CartController from './Controller/CartController';
-app.use(CartController.router);
 
 
-// Страница товара (должна быть самой поседней в подкл)
-import * as ProductController from './Controller/ProductController';
-app.use(ProductController.router);
-
-
-
-console.log('server start at http://localhost:3005');
-app.listen(3005);
