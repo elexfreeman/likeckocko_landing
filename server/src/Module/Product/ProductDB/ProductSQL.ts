@@ -48,6 +48,7 @@ export class ProductSQL extends ProductDB {
             let result = await this.db.raw(sql, {
                 sUrl: sUrl
             });
+            
             res = result[0][0];
         } catch (e) {
             this.errorSys.error(errorString, String(e));

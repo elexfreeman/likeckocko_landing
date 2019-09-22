@@ -10,6 +10,7 @@ export class ChockoSeo extends System.SeoModule.Seo {
     constructor(req: System.MainRequest.MainRequest, conf: any) {
         super();
         this.conf = conf;
+        this.req = req;
 
         this.sTitle = 'Likechoco - Интернет магазин шоколада ручной работы';
         this.sDescription = 'Likechoco - Интернет магазин шоколада ручной работы';

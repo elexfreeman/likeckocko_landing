@@ -1,20 +1,25 @@
-import * as express from 'express';
-import MainRequest from '../System/MainRequest';
-
-import { Product } from '../Infrastructure/typeOrm/Entity/Product';
-
-import BaseController from '../System/BaseController';
-
+const express = require('express');
 const router = express.Router();
+
+import { MainRequest } from '@a-a-game-studio/aa-core/lib/System/MainRequest';
+import { Product } from '../Module/Product/Product';
+import { ChockoCtrl } from './ChockoCtrl';
 
 /**
  * Контроллер 
  */
-class ProductController extends BaseController {
+class ProductController extends ChockoCtrl {
+
+    public product: Product;
 
     constructor(req: MainRequest, resp: any) {
         super(req, resp);
-        console.log('ProductController');
+
+        this.product = Product.Init(
+            this.req.sys.errorSys,
+            null,
+            this.listDB
+        );
     }
 
     /**
@@ -22,20 +27,24 @@ class ProductController extends BaseController {
      */
     public async Product() {
         console.log('Product page');
-        let Url = this.req.params['url'];
-                
-        const product = await this.connection.manager.findOne(Product, { url: Url });
-        if (!product) {
-            this.resp.status(404).redirect("/")
-        } else {
-            this.req.sys.seo.title = 'Likechoco | '+ product.caption;
-            this.req.sys.seo.reload();
+        let sUrl = this.req.params['url'];
 
-            this.resp.render('product_page', { 
-                seo: this.req.sys.seo,
-                page: "Главная", 
-                product: product ,
-                apiUrl: this.req.apiUrl
+        await this.product
+            .actions
+            .infoA
+            .faGetInfoByUrl(sUrl);
+
+        if (!this.product.is()) {
+            this.resp.status(404).redirect("/");
+        } else {
+            this.req.seo.sTitle = 'Likechoco | ' + this.product.data.caption
+            this.req.seo.reload();
+
+            this.resp.render('product_page', {
+                seo: this.req.seo,
+                page: "Главная",
+                product: this.product,
+                apiUrl: this.conf.apiUrl
             });
 
         }
@@ -47,10 +56,10 @@ class ProductController extends BaseController {
 /**
  * Страница товара
  */
-router.get('/:url', async (req: any, res: any, next) => {
+router.get('/:url', async (req: any, res: any, next: any) => {
     const self = <ProductController>await ProductController.Init(req, res);
     self.Product();
 });
 
 
-export { router };
+export { router as ProductController };

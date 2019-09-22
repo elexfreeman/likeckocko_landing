@@ -27,6 +27,8 @@ async function faRunServer() {
 
     app
         .fChockoUseIndex()
+        .fChockoProductPage()
+        
         .fUseAdminUser() // Контролер администрирования пользователей
         .fUseUserCtrl() // Контролер пользователя
         .fStart(); // Запускаем приложение

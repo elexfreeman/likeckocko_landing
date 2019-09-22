@@ -8,6 +8,7 @@ import { ChockoConfI } from './Module/ConfigI';
 import { ChockoAuthMiddleware } from './ChockoAuthMiddleware';
 
 import { IndexController } from './Controller/IndexController';
+import { ProductController } from './Controller/ProductController';
 
 export class ChockoApp extends App {
 
@@ -51,6 +52,14 @@ export class ChockoApp extends App {
      */
     public fChockoUseIndex(): ChockoApp {
         this.objExpress.use(IndexController);
+        return this;
+    }
+
+    /**
+     * Использвать страницу продукта
+     */
+    public fChockoProductPage(): ChockoApp {
+        this.objExpress.use(ProductController);
         return this;
     }
 }

@@ -1,33 +1,25 @@
 const express = require('express');
 const router = express.Router();
 
-import { BaseCtrl } from '@a-a-game-studio/aa-core/lib/Namespace/System';
 import { MainRequest } from '@a-a-game-studio/aa-core/lib/System/MainRequest';
 import { Product } from '../Module/Product/Product';
-import { ChockoListDB } from '../Module/ChockoListDB';
-import { ChockoConfI } from '../Module/ConfigI';
+import { ChockoCtrl } from './ChockoCtrl';
 
 /**
  * Контроллер 
  */
-class IndexController extends BaseCtrl {
-    public conf: ChockoConfI;
+class IndexController extends ChockoCtrl {
+
     public product: Product;
 
     constructor(req: MainRequest, resp: any) {
         super(req, resp);
-        //test
-        console.log('IndexController');
-        this.conf = <ChockoConfI>this.req.conf;
 
         this.product = Product.Init(
             this.req.sys.errorSys,
             null,
-            <ChockoListDB>this.req.sys.userSys.listDB
+            this.listDB
         );
-
-        
-
     }
 
     /**
@@ -40,11 +32,6 @@ class IndexController extends BaseCtrl {
             .actions
             .infoA
             .faGetList();
-
-        console.log(products);
-        console.log(this.product.errorSys.getErrors());
-        
-        
 
         this.resp.render('index', {
             seo: this.req.seo,

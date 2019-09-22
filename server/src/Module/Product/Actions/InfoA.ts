@@ -44,12 +44,8 @@ export class InfoA extends AAClasses.BaseModule.BaseActions {
             .fText()
             .fMinLen(1)
 
-        this.object = await fV.faDoIfOkAsync(async () =>
-            Product.Init(
-                this.object.errorSys,
-                await this.object.listDB.productDB.faGetInfoByUrl(sUrl)
-                , this.object.listDB
-            )
+        this.object.data = await fV.faDoIfOkAsync(async () =>
+            await this.object.listDB.productDB.faGetInfoByUrl(sUrl)
         );
     }
 
@@ -60,7 +56,7 @@ export class InfoA extends AAClasses.BaseModule.BaseActions {
 
         let resp: Product[] = []
         let data = await this.object.listDB.productDB.faGetList();
-        for(let i=0; i< data.length; i++ ){
+        for (let i = 0; i < data.length; i++) {
             resp.push(Product.Init(
                 this.object.errorSys,
                 data[i]
