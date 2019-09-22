@@ -58,7 +58,7 @@ export class ChockoApp extends App {
     /**
      * Использвать страницу продукта
      */
-    public fChockoProductPage(): ChockoApp {
+    public fChockoUseProductPage(): ChockoApp {
         this.objExpress.use(ProductController);
         return this;
     }

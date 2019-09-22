@@ -4,31 +4,25 @@ const path = require('path');
 
 /* Ф-я запуска приложения */
 async function faRunServer() {
-
-    let app: ChockoApp = new ChockoApp(config);
-    app.fUseMySql();
-    app.fInitDB()
-        .fUseSeo();
-
     console.log('Starting App...');
 
-    /* Ставим миграции */
-    await app.faInstall();
-
-    app.fDisableCors() // отключаем cors
+    let app: ChockoApp = new ChockoApp(config);
+    app.fUseMySql(); // подключаем MySql
+    app.fInitDB() // инициальизируем DB
+        .fUseSeo() // используем сео модуль
+        .fDisableCors() // отключаем cors
         .fUseBodyParser() // используем дефолтный BodyParser
-        .fUseReddis()
-        .fUseStatic('./public')
-        .fUseViews(path.join(__dirname, '/View'))
+        .fUseStatic('./public') // статические сфайлы
+        .fUseViews(path.join(__dirname, '/View')) // динамические страницы
         ;
 
-    /* Иницализируем модуль аторизации */
-    app = await app.faChockoAuth();
+    await app.faInstall(); //  Ставим миграции
 
-    app
-        .fChockoUseIndex()
-        .fChockoProductPage()
-        
+    app = await app.faChockoAuth(); // Иницализируем модуль аторизации
+
+    app.fChockoUseIndex() // индексная страница
+        .fChockoUseProductPage() // страница товара
+
         .fUseAdminUser() // Контролер администрирования пользователей
         .fUseUserCtrl() // Контролер пользователя
         .fStart(); // Запускаем приложение
