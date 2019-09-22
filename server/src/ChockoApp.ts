@@ -5,7 +5,7 @@ import { SeoMiddleware } from './System/Middleware/SeoMiddleware'
 import { ChockoListDBI } from './Module/ChockoListDB';
 import { ProductSQL } from './Module/Product/ProductDB/ProductSQL';
 import { ChockoConfI } from './Module/ConfigI';
-import { ChockoAuthMiddleware } from './ChockoAuthMiddleware';
+import { ChockoAuthMiddleware } from './System/Middleware/ChockoAuthMiddleware';
 
 import { IndexController } from './Controller/IndexController';
 import { ProductController } from './Controller/ProductController';

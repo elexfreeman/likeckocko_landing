@@ -1,5 +1,5 @@
 import { Middleware } from '@a-a-game-studio/aa-core/lib';
-import { ChockoListDB, ChockoListDBI } from './Module/ChockoListDB';
+import { ChockoListDB, ChockoListDBI } from '../../Module/ChockoListDB';
 
 export class ChockoAuthMiddleware extends Middleware.AuthSysMiddleware {
 
