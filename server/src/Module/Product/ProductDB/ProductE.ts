@@ -9,3 +9,10 @@ export interface ProductI {
     price: number;
     isPublished: boolean;
 }
+
+export class ProductE {
+    //Имя таблицы
+    public static NAME = 'products';
+
+}
+

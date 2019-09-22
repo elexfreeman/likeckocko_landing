@@ -2,34 +2,37 @@
     <div class="products">
         <% products.forEach(function(p) { %>
         <div class="card product">
-            <a href="/<%= p.url %>">
+            <a href="/<%= p.data.url %>">
                 <div class="card-image">
-                    <img class="p-img img-1" src="/img/<%= p.img %>" alt="<%= p.caption %>">
-                    <img class="p-img img-2" src="/img/<%= p.bgImg() %>" alt="<%= p.caption %>">
+                    <img class="p-img img-1" src="/img/<%= p.data.img %>" alt="<%= p.data.caption %>">
+                    <img class="p-img img-2" src="/img/<%= p.bgImg() %>" alt="<%= p.data.caption %>">
                 </div>
             </a>
             <div class="card-header">
                 <div class="card-title h5">
-                    <a href="/<%= p.url %>">
+                    <a href="/<%= p.data.url %>">
                         <%= p.caption %>
                     </a>
                 </div>
                 <div class="card-subtitle text-gray">
-                    <a href="/<%= p.url %>">
-                        <%- p.description %>
+                    <a href="/<%= p.data.url %>">
+                        <%- p.data.description %>
                     </a>
                 </div>
             </div>
             <div class="card-body">
 
                 <div class="price">
-                    Цена: <b><%= p.price %></b> руб.
+                    Цена: <b><%= p.data.price %></b> руб.
                 </div>
 
             </div>
             <div class="card-footer text-right">
-                <div product_img="/img/<%= p.img %>" product_id='<%= p.id %>' product_caption='<%= p.caption %>'
-                    product_price='<%= p.price %>' class='cart-button'></div>
+                <div product_img="/img/<%= p.data.img %>" product_id='<%= p.data.id %>'
+                    product_caption='<%= p.data.caption %>' 
+                    product_price='<%= p.data.price %>' 
+                    class='cart-button'>
+                </div>
             </div>
 
         </div>

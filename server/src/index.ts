@@ -1,28 +1,18 @@
-import { App, Middleware, System, User } from '@a-a-game-studio/aa-core/lib';
-import * as AAClasses from '@a-a-game-studio/aa-classes/lib';
+import { ChockoApp } from './ChockoApp';
 const config = require('./Configs/MainConfig.js');
 const path = require('path');
 
-import SeoMiddleware from './System/Middleware/SeoMiddleware'
-import { ChockoListDBI } from './Module/ChockoListDB';
-
-const app = new App(config)
-    .fUseMySql();
-
 /* Ф-я запуска приложения */
 async function faRunServer() {
+
+    let app: ChockoApp = new ChockoApp(config);
+    app.fUseMySql();
+    app.fInitDB()
+        .fUseSeo();
+
     console.log('Starting App...');
 
-    /* модули доступа к данным */
-    const listDBData: ChockoListDBI = {
-        userDB: new User.UserSQL(app.errorSys, app.objDb),
-        walletDB: new AAClasses.WalletModule.WalletDB(app.errorSys),
-        fileDB: new AAClasses.FileModule.FileDB(app.errorSys),
-    }
-
-    const authSysMiddleware = new Middleware.AuthSysMiddleware(listDBData);
-    app.objExpress.use(SeoMiddleware);
-
+    /* Ставим миграции */
     await app.faInstall();
 
     app.fDisableCors() // отключаем cors
@@ -33,9 +23,11 @@ async function faRunServer() {
         ;
 
     /* Иницализируем модуль аторизации */
-    await app.faUseAuthSys(authSysMiddleware);
+    app = await app.faChockoAuth();
 
-    app.fUseAdminUser() // Контролер администрирования пользователей
+    app
+        .fChockoUseIndex()
+        .fUseAdminUser() // Контролер администрирования пользователей
         .fUseUserCtrl() // Контролер пользователя
         .fStart(); // Запускаем приложение
 

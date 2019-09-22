@@ -56,7 +56,7 @@ export class Product extends AAClasses.BaseModule.AABase {
      * @param data 
      * @param userDB 
      */
-    public static Init(errorSys: AAClasses.Components.ErrorSys, data: ProductI, listDB: ChockoListDB): User {
+    public static Init(errorSys: AAClasses.Components.ErrorSys, data: ProductI, listDB: ChockoListDB): Product {
         /* создаем Product */
         let object = new Product(errorSys, listDB);
         /* копируем в него поля из базы */

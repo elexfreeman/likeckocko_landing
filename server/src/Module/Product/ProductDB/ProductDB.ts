@@ -7,7 +7,7 @@ export class ProductDB extends AAClasses.BaseModule.BaseDB {
      * Список товаров
      */
     public async faGetList(): Promise<ProductI[]> {
-        let res: ProductI[];
+        let res: ProductI[] = [];
         this.errorSys.error(this.fClassName() + '.' + this.fMethodName(), 'abstract method');
         return res;
     }
@@ -17,7 +17,17 @@ export class ProductDB extends AAClasses.BaseModule.BaseDB {
      * Получить product по его url
      * @param sUrl: number
      */
-    public async faGetInfoByUrl(sUrl: number): Promise<ProductI> {
+    public async faGetInfoByUrl(sUrl: string): Promise<ProductI> {
+        let res: ProductI;
+        this.errorSys.error(this.fClassName() + '.' + this.fMethodName(), 'abstract method');
+        return res;
+    }
+
+    /**
+     * Получить product по его id
+     * @param iProducId: number
+     */
+    public async faGetInfo(iProducId: number): Promise<ProductI> {
         let res: ProductI;
         this.errorSys.error(this.fClassName() + '.' + this.fMethodName(), 'abstract method');
         return res;
