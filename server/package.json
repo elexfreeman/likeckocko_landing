@@ -8,7 +8,7 @@
   "main": "./src/index.ts",
   "dependencies": {
     "@a-a-game-studio/aa-classes": "^1.0.11",
-    "@a-a-game-studio/aa-core": "^1.0.10",
+    "@a-a-game-studio/aa-core": "^1.0.11",
     "@types/chai": "^4.2.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
