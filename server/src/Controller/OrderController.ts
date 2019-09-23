@@ -1,24 +1,15 @@
-import * as express from 'express';
-import MainRequest from '../System/MainRequest';
-
-import { Product } from '../Infrastructure/typeOrm/Entity/Product';
-
-import BaseController from '../System/BaseController';
-import { User } from '../Infrastructure/typeOrm/Entity/User';
-import { Order } from '../Infrastructure/typeOrm/Entity/Order';
-import { OrderProduct } from '../Infrastructure/typeOrm/Entity/OrderProduct';
-
+const express = require('express');
 const router = express.Router();
+
+import { MainRequest } from '@a-a-game-studio/aa-core/lib/System/MainRequest';
+import { Product } from '../Module/Product/Product';
+import { ChockoCtrl } from './ChockoCtrl';
+
 
 /**
  * Контроллер
  */
-class OrderController extends BaseController {
-
-    constructor(req: MainRequest, resp: any) {
-        super(req, resp);
-        console.log('Api OrderController');
-    }
+class OrderController extends ChockoCtrl {
 
     /**
      * Оформить заказ

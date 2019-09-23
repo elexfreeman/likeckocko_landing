@@ -9,6 +9,7 @@ import { ChockoAuthMiddleware } from './System/Middleware/ChockoAuthMiddleware';
 
 import { IndexController } from './Controller/IndexController';
 import { ProductController } from './Controller/ProductController';
+import { OrderSQL } from './Module/Order/OrderDB/OrderSQL';
 
 export class ChockoApp extends App {
 
@@ -24,7 +25,8 @@ export class ChockoApp extends App {
             userDB: new User.UserSQL(this.errorSys, this.objDb),
             walletDB: new AAClasses.WalletModule.WalletDB(this.errorSys),
             fileDB: new AAClasses.FileModule.FileDB(this.errorSys),
-            productDB: new ProductSQL(this.errorSys, this.objDb)
+            productDB: new ProductSQL(this.errorSys, this.objDb),
+            orderDB: new OrderSQL(this.errorSys, this.objDb)
         }
         return this;
     }
