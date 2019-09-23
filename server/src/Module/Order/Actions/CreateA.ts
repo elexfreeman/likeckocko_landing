@@ -75,8 +75,31 @@ export class CreateA extends AAClasses.BaseModule.BaseActions {
             }
         });
 
+        let newUser: AAClasses.UserModule.UserI = await fV.faDoIfOkAsync(async () =>
+            /* вставляем пользователя */
+            await this.object.listDB.userDB.faInsert(user)
+        );
 
-        return resp;
+
+        let orderId = await fV.faDoIfOkAsync(async () => {
+            /* вставляем заказ */
+            order.user_id = newUser.id;
+            return await this.object.listDB.orderDB.faInsert(order)
+        });
+
+        await fV.faDoIfOkAsync(async () => {
+            /* вставляем товары заказа */
+            for (let i = 0; i < order.products.length; i++) {
+                order.products[i].order_id = orderId;
+                await this.object
+                    .listDB
+                    .orderDB
+                    .faInsertOrderProducts(order.products[i]);
+            }
+        });
+
+
+        return this.object.errorSys.isOk();
     }
 
 }
