@@ -52,6 +52,17 @@ export class OrderDB extends AAClasses.BaseModule.BaseDB {
         return res;
     }
 
+
+    /**
+     * Вставить заказ и товары
+     * @param data 
+     */
+    public async faAdd(data: OrderI): Promise<number> {
+        let res: number;
+        this.errorSys.error(this.fClassName() + '.' + this.fMethodName(), 'abstract method');
+        return res;
+    }
+
     /**
      * Вставить продукты заказа
      * @param data 

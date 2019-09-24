@@ -10,6 +10,7 @@ import { ChockoAuthMiddleware } from './System/Middleware/ChockoAuthMiddleware';
 import { IndexController } from './Controller/IndexController';
 import { ProductController } from './Controller/ProductController';
 import { OrderSQL } from './Module/Order/OrderDB/OrderSQL';
+import { CkockoUserSQL } from './Module/User/CkockoUserSQL';
 
 export class ChockoApp extends App {
 
@@ -22,7 +23,7 @@ export class ChockoApp extends App {
     public fInitDB(): ChockoApp {
         /* модули доступа к данным */
         this.listDBData = {
-            userDB: new User.UserSQL(this.errorSys, this.objDb),
+            userDB: new CkockoUserSQL(this.errorSys, this.objDb),
             walletDB: new AAClasses.WalletModule.WalletDB(this.errorSys),
             fileDB: new AAClasses.FileModule.FileDB(this.errorSys),
             productDB: new ProductSQL(this.errorSys, this.objDb),
@@ -30,6 +31,15 @@ export class ChockoApp extends App {
         }
         return this;
     }
+
+    public fGetListDB(): ChockoListDBI {
+        return this.listDBData;
+    }
+
+    public fGerUserSys() {
+        
+    }
+
 
 
     public async faChockoAuth(): Promise<ChockoApp> {

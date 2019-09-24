@@ -112,7 +112,7 @@ export class OrderSQL extends OrderDB {
      * Вставить заказ
      * @param data 
      */
-    public async faInsert(data: OrderI): Promise<number> {
+    public async faAdd(data: OrderI): Promise<number> {
         const errorString = this.fClassName() + '.' + this.fMethodName();
         let orderId;
 
@@ -125,6 +125,9 @@ export class OrderSQL extends OrderDB {
                 .insert(this.modelValidatorSys.getResult());
 
             orderId = d[0];
+
+            data.id = orderId;
+            await this.faInsertOrderProducts(data);
         } catch (e) {
             this.errorSys.error(errorString, String(e));
         }
@@ -138,18 +141,20 @@ export class OrderSQL extends OrderDB {
     * @param data 
     */
     public async faInsertOrderProducts(data: OrderI): Promise<number[]> {
+
         let res: number[] = [];
         const errorString = this.fClassName() + '.' + this.fMethodName();
 
         try {
             if (data.products.length > 0) {
                 for (let i = 0; i < data.products.length; i++) {
-                    let d = await this.db(OrderE.NAME)
+
+                    let d = await this.db('order_product')
                         .insert({
                             price: data.products[i].price,
                             count: data.products[i].count,
                             product_id: data.products[i].product_id,
-                            order_id: data.products[i].order_id,
+                            order_id: data.id,
                         });
 
                     res.push(d[0]);

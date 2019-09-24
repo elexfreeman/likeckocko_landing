@@ -15,8 +15,9 @@ export class CreateA extends AAClasses.BaseModule.BaseActions {
      * создать заказ
      * @param order 
      */
-    public async faCreate(user: AAClasses.UserModule.UserI, order: OrderI): Promise<boolean> {
-        let resp = false;
+    public async faCreate(user: AAClasses.UserModule.UserI, order: OrderI): Promise<number> {
+        let orderId: number;
+        let userId: number;
         const errorString = this.fClassName() + '.' + this.fMethodName();
 
         let fV = new FieldValidator(this.object.errorSys, true);
@@ -35,7 +36,7 @@ export class CreateA extends AAClasses.BaseModule.BaseActions {
                 .fSetErrorString(errorString + '.user.name')
                 .fExist()
                 .fText()
-                .fMinLen(5)
+                .fMinLen(3)
 
                 .fSetData(user.phone)
                 .fSetErrorString(errorString + '.user.phone')
@@ -71,35 +72,32 @@ export class CreateA extends AAClasses.BaseModule.BaseActions {
                     .fSetErrorString(errorString + '.order.products.' + i + '.count')
                     .fExist()
                     .fInt()
-                    .fMore(0)
+                    .fMore(0);
             }
         });
 
-        let newUser: AAClasses.UserModule.UserI = await fV.faDoIfOkAsync(async () =>
-            /* вставляем пользователя */
-            await this.object.listDB.userDB.faInsert(user)
+        let userData: AAClasses.UserModule.UserI = await fV.faDoIfOkAsync(async () =>
+            await this.object.listDB.userDB.faGetInfoByLogin(user.phone)
         );
 
+        if (userData) {
+            userId = userData.id;
+        } else {
+            userId = await fV.faDoIfOkAsync(async () => {
+                /* вставляем пользователя */
+                let newUser = await this.object.listDB.userDB.faInsert(user)
+                return newUser.id;
+            });
+        }
 
-        let orderId = await fV.faDoIfOkAsync(async () => {
+        orderId = await fV.faDoIfOkAsync(async () => {
             /* вставляем заказ */
-            order.user_id = newUser.id;
-            return await this.object.listDB.orderDB.faInsert(order)
-        });
-
-        await fV.faDoIfOkAsync(async () => {
-            /* вставляем товары заказа */
-            for (let i = 0; i < order.products.length; i++) {
-                order.products[i].order_id = orderId;
-                await this.object
-                    .listDB
-                    .orderDB
-                    .faInsertOrderProducts(order.products[i]);
-            }
+            order.user_id = userId;
+            return await this.object.listDB.orderDB.faAdd(order)
         });
 
 
-        return this.object.errorSys.isOk();
+        return orderId;
     }
 
 }
