@@ -8,7 +8,7 @@ async function faRunServer() {
 
     let app: ChockoApp = new ChockoApp(config);
     app.fUseMySql(); // подключаем MySql
-    app.fInitDB() // инициальизируем DB
+    app.fUseAAClasses()
         .fUseSeo() // используем сео модуль
         .fDisableCors() // отключаем cors
         .fUseBodyParser() // используем дефолтный BodyParser
@@ -18,13 +18,15 @@ async function faRunServer() {
 
     await app.faInstall(); //  Ставим миграции
 
-    app = await app.faChockoAuth(); // Иницализируем модуль аторизации
+    //app = await app.faChockoAuth(); // Иницализируем модуль аторизации
+
+
 
     app.fChockoUseIndex() // индексная страница
         .fChockoUseProductPage() // страница товара
 
-        .fUseAdminUser() // Контролер администрирования пользователей
-        .fUseUserCtrl() // Контролер пользователя
+        // .fUseAdminUser() // Контролер администрирования пользователей
+        // .fUseUserCtrl() // Контролер пользователя
         .fStart(); // Запускаем приложение
 
 } // faRunServer

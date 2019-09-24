@@ -16,10 +16,7 @@ const run = async () => {
 
     let app: ChockoApp = new ChockoApp(config);
     app.fUseMySql(); // подключаем MySql
-    app.fInitDB() // инициальизируем DB
-
-
-
+    app.fUseAAClasses();
 
     await mocha.describe('Проверка работы OrderSQL', async () => {
 
@@ -62,8 +59,10 @@ const run = async () => {
                 .сreateA
                 .faCreate(userData, orderData);
 
-            console.log(resp);
-            console.log(app.errorSys.getErrors());
+                console.log(app.errorSys.getErrors());
+                
+
+            assert.ok(resp > 0);
 
 
         }).timeout(3000);
