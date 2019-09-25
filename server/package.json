@@ -45,7 +45,7 @@
     "migration:mysql:up": "./node_modules/.bin/knex migrate:latest",
     "migration:mysql:down": "./node_modules/.bin/knex migrate:rollback",
     "start": "./node_modules/.bin/ts-node ./src/index.ts",
-    "dev": "./node_modules/.bin/ts-node ./src/index.ts",
+    "dev": "./node_modules/.bin/ts-node ./src/Func/fUser.ts",
     "test": "./node_modules/.bin/ts-mocha",
     "watch": "./node_modules/.bin/nodemon -e ts -w ./src -x npm run watch:serve",
     "watch:serve": "./node_modules/.bin/ts-node ./src/index.ts",
