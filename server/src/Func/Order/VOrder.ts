@@ -1,4 +1,80 @@
+import * as TFOrder from "./TOrder";
+
 import { TValidator } from "../TValidator";
+
+export const errorSample = {
+    "userId": {
+        "isNotExist": false,
+        "isNotInt": false,
+        "isNotMoreThan": false,
+    },
+    "sDeliveryAddress": {
+        "isNotExist": false,
+        "isNotText": false,
+        "lessThanMinLen": false,
+    },
+    "sComment": {
+        "isNotExist": false,
+        "isNotText": false,
+    },
+    "sDeliveryDate": {
+        "isNotExist": false,
+        "isNotText": false,
+    },
+    "sDeliveryTimeComment": {
+        "isNotExist": false,
+        "isNotText": false,
+    },
+    "nTotalprice": {
+        "isNotExist": false,
+        "isNotInt": false,
+    },
+    "orderId.0": {
+        "isNotExist": false,
+        "isNotInt": false,
+        "isNotMoreThan": false,
+    },
+    "productId.0": {
+        "isNotExist": false,
+        "isNotInt": false,
+        "isNotMoreThan": false,
+    },
+    "price.0": {
+        "isNotExist": false,
+        "isNotInt": false,
+        "isNotMoreThan": false,
+    },
+    "count.0": {
+        "isNotExist": false,
+        "isNotInt": false,
+        "isNotMoreThan": false,
+    },
+
+}
+
+export const fVMakeOrder =
+    (cValidator: TValidator) =>
+        (order: TFOrder.OrderI) => {
+            fVOrderInsert(cValidator)
+                (order.user_id)
+                (order.delivery_address)
+                (order.comment)
+                (order.delivery_date)
+                (order.delivery_time_comment)
+                (order.products);
+
+            cValidator.fDoIfOk(
+                () => order.products.forEach((product, key) =>
+                    fVOrderProductInsert(cValidator)
+                        (key)
+                        (product.product_id)
+                        (product.price)
+                        (product.count)
+                )
+            );
+
+            return cValidator.fIsOk();
+        }
 
 
 /**
@@ -7,37 +83,31 @@ import { TValidator } from "../TValidator";
  */
 export const fVOrderProductInsert =
     (cValidator: TValidator) =>
-        (orderId: number) =>
+        (insertCounter: number) =>
             (productId: number) =>
                 (price: number) =>
-                    async (count: number) => {
-                        cValidator
-                            .fSetErrorString('orderId')
-                            .fSetData(orderId)
-                            .fId();
+                    (count: number) => {
 
                         cValidator
-                            .fSetErrorString('productId')
+                            .fSetErrorString('productId.' + insertCounter)
                             .fSetData(productId)
                             .fId();
 
                         cValidator
-                            .fSetErrorString('price')
+                            .fSetErrorString('price.' + insertCounter)
                             .fSetData(price)
                             .fExist()
                             .fInt()
                             .fMore(0);
 
                         cValidator
-                            .fSetErrorString('count')
+                            .fSetErrorString('count.' + insertCounter)
                             .fSetData(count)
                             .fExist()
                             .fInt()
                             .fMore(0);
 
-                        cValidator.fProcess();
-
-                        return true;
+                        return cValidator.fIsOk();
                     };
 
 
@@ -48,7 +118,7 @@ export const fVOrderInsert =
                 (sComment: string) =>
                     (sDeliveryDate: string) =>
                         (sDeliveryTimeComment: string) =>
-                            async (nTotalprice: number) => {
+                            (aProducts: TFOrder.OrderProductI[]) => {
                                 cValidator
                                     .fSetErrorString('userId')
                                     .fSetData(userId)
@@ -80,11 +150,10 @@ export const fVOrderInsert =
                                     .fText();
 
                                 cValidator
-                                    .fSetErrorString('nTotalprice')
-                                    .fSetData(nTotalprice)
+                                    .fSetErrorString('aProducts')
+                                    .fSetData(aProducts)
                                     .fExist()
-                                    .fInt();
 
-                                cValidator.fProcess();
+                                return cValidator.fIsOk();
 
                             };                    

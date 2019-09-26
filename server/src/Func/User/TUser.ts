@@ -1,4 +1,4 @@
-import { TValidator } from "./TValidator";
+import { TValidator } from "../TValidator";
 
 export interface UserI {
     id?: number;
@@ -22,8 +22,12 @@ export type TGetById = (id: number) => Promise<UserI>;
 
 export type TCheckUserExist = (id: number) => Promise<number>;
 
+export type TVUserRegister = (cValidator: TValidator) =>
+    (name: string) =>
+        (surname: string) =>
+            (phone: string) => boolean;
+
 export type TUserRegister =
-    (cValidator: TValidator) =>
-        (name: string) =>
-            (surname: string) =>
-                (phone: string) => Promise<number>;
+    (name: string) =>
+        (surname: string) =>
+            (phone: string) => Promise<number>;

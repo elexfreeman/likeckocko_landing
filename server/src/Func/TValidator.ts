@@ -69,14 +69,40 @@ export class TValidator {
         return this;
     }
 
+    private fIsNull(): boolean {
+        let resp = false;
+        try {
+            switch (this.data) {
+                case undefined:
+                    resp = true;
+                    break;
+                case null:
+                    resp = true;
+                    break;
+            }
+        } catch (e) {
+            resp = true;
+        }
+
+        return resp;
+    }
+
     /**
      * Существование значения
      * @error isNotExist
      */
-    public fExist(sError: string = 'isNotExist'): TValidator {
-        this.fErr('isNotExist', false);
-        if (!this.data) {
+    public fExist(): TValidator {
+        this.fErr('isNotExist', this.fIsNull());
+        return this;
+    }
 
+    /**
+     * Занчение присваивается если пусто
+     * @param data 
+     */
+    public fDefault(data: any): TValidator {
+        if(this.fIsNull()) {
+            this.data = data;
         }
         return this;
     }

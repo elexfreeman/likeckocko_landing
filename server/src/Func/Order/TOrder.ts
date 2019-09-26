@@ -1,4 +1,5 @@
 import { TValidator } from "../TValidator";
+import { TCheckUserExist } from "../User/TUser";
 
 
 export interface OrderProductI {
@@ -22,21 +23,18 @@ export interface OrderI {
 }
 
 export type TMakeOrder =
-    (cValidator: TValidator) =>
-        (order: OrderI) => Promise<number>;
+    (order: OrderI) => Promise<number>;
 
 export type TOrderInsert =
-    (cValidator: TValidator) =>
-        (userId: number) =>
-            (sDeliveryAddress: string) =>
-                (sComment: string) =>
-                    (sDeliveryDate: string) =>
-                        (sDeliveryTimeComment: string) =>
-                            (nTotalPrice: number) => Promise<number>;
+    (userId: number) =>
+        (sDeliveryAddress: string) =>
+            (sComment: string) =>
+                (sDeliveryDate: string) =>
+                    (sDeliveryTimeComment: string) =>
+                        (nTotalPrice: number) => Promise<number>;
 
 export type TOrderProductInsert =
-    (cValidator: TValidator) =>
-        (orderId: number) =>
-            (productId: number) =>
-                (price: number) =>
-                    (count: number) => Promise<number>;
+    (orderId: number) =>
+        (productId: number) =>
+            (price: number) =>
+                (count: number) => Promise<number>;
