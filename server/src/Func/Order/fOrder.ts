@@ -1,37 +1,45 @@
 import * as TFOrder from "./TOrder";
 import { db } from "../Sys/DBConnect";
 
+import * as SFunc from "../Sys/SFunc";
 export const fOrderProductTable = () => 'order_product';
 export const fOrderTable = () => 'orders';
 
 /**
  * Создать заказ
- * @param order: TFOrder.OrderI 
  */
 export const fMakeOrder: TFOrder.TMakeOrder =
-    async (order: TFOrder.OrderI) => {
-        /* Вставляем заказ */
-        const orderId = await faOrderInsert(order.user_id)
-            (order.delivery_address)
-            (order.comment)
-            (order.delivery_date)
-            (order.delivery_time_comment)
-            (order.products //высчитываем общую сумму
-                .map(product =>
-                    product.count * product.price) // массив цены за товар
-                .reduce((previousValue, currentValue) =>
-                    previousValue + currentValue)); // складываем
+    // заказ, провализированный
+    (order: TFOrder.OrderI) =>
+        // ф-я подсчета суммы заказа
+        async (fCalcTotalSumm: TFOrder.TCalcOrderTotalSumm) => {
+            /* Вставляем заказ */
+            const orderId = await faOrderInsert(order.user_id)
+                (order.delivery_address)
+                (order.comment)
+                (order.delivery_date)
+                (order.delivery_time_comment)
+                (fCalcTotalSumm(order.products)); // складываем
 
-        /* Вставляем товары заказа */
-        order.products.forEach(async (product: TFOrder.OrderProductI) =>
-            await faOrderProductInsert(orderId)
-                (product.product_id)
-                (product.price)
-                (product.count)
-        );
+            /* частичное применение функции (для примера)  */
+            const faInsertProductForOrder = faOrderProductInsert(orderId);
 
-        return orderId;
-    };
+            /* Вставляем товары заказа */
+            order.products.forEach(async (product: TFOrder.OrderProductI) =>
+                await faInsertProductForOrder(product.product_id)
+                    (product.price)
+                    (product.count)
+            );
+
+            return orderId;
+        };
+
+
+export const fCalcOrderTotalSumm =
+    (aProducts: TFOrder.OrderProductI[]) =>
+        aProducts.map(product => product.count * product.price)
+            .reduce(SFunc.fSum); // массив цены за товар
+
 
 /**
  * Вставить заказ
@@ -72,3 +80,10 @@ export const faOrderProductInsert: TFOrder.TOrderProductInsert =
                             count: nCount,
                         }))[0];
 
+
+
+export const faGetUserOrders = 
+    async (userId: number) => {
+        return (await db(fOrderTable()).where('user_id', userId))
+    }
+                

@@ -54,7 +54,7 @@ async function run() {
         VOrder.fVMakeOrder(cValidator)(order);
         cValidator.fProcess();
 
-        await FOrder.fMakeOrder(order);
+        await FOrder.fMakeOrder(order)(FOrder.fCalcOrderTotalSumm);
 
 
         console.log(cValidator.fGetErrors());

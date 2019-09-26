@@ -23,7 +23,9 @@ export interface OrderI {
 }
 
 export type TMakeOrder =
-    (order: OrderI) => Promise<number>;
+    (order: OrderI) =>
+        (fCalcTotalSumm: TCalcOrderTotalSumm) =>
+            Promise<number>;
 
 export type TOrderInsert =
     (userId: number) =>
@@ -38,3 +40,6 @@ export type TOrderProductInsert =
         (productId: number) =>
             (price: number) =>
                 (count: number) => Promise<number>;
+
+export type TCalcOrderTotalSumm =
+    (aProducts: OrderProductI[]) => number           

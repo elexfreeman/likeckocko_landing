@@ -4,6 +4,7 @@ import * as mocha from 'mocha';
 import { assert } from 'chai';
 
 import * as FUser from "../../src/Func/User/FUser";
+import * as FOrder from "../../src/Func/Order/FOrder";
 import * as VUser from "../../src/Func/User/VUser";
 import { TValidator } from '../../src/Func/TValidator';
 import { UserI } from '../../src/Func/User/TUser';
@@ -47,6 +48,44 @@ async function run() {
             (user.phone);
 
         assert.ok(userId > 0);
+    }); //it ****
+
+    mocha.it('Test currying', async () => {
+
+        const a = ['a', 'b', 'c', 'd'];
+
+        const fc = function (aA: string[]) {
+            const s = aA.join('');
+            console.log(s);
+            
+            return function (n: number) {
+                return s[n];
+            }
+        }
+        console.log(fc(a)(1));
+        
+    }); //it ****
+
+    mocha.it('Test currying userID', async () => {
+
+        const John = FUser.faUserId(1);
+        const Marry = FUser.faUserId(3);
+
+        const JohnData = await John(FUser.faGetById);
+        const MarryData = await Marry(FUser.faGetById);
+
+        console.log(JohnData);
+        console.log(MarryData);
+
+
+        const JohnOrders = await John(FOrder.faGetUserOrders);
+
+        console.log(JohnOrders);
+        
+        
+
+
+        
     }); //it ****
 
 }
