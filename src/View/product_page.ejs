@@ -28,9 +28,12 @@
     <div class="product-container column col-6  col-sm-12">
       <h1><%= product.caption %></h1>
       <div class="price"><%= product.price %> руб.</div>
-      <div class="card-button">
-        <div product_img="/img/<%= product.img %>" product_id='<%= product.id %>'
-          product_caption='<%= product.caption %>' product_price='<%= product.price %>' class='card-button'></div>
+      <div>
+        <div product_img="/img/<%= product.img %>" 
+          product_id='<%= product.id %>'
+          product_caption='<%= product.caption %>' 
+          product_price='<%= product.price %>' 
+          class='card-button'></div>
       </div>
       <div class="description">
         <%- product.description %>
