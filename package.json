@@ -11,9 +11,9 @@
     "server": "./node_modules/.bin/ts-node ./src/index.ts",
     "ts": "./node_modules/.bin/ts-node",
     "test": "./node_modules/.bin/ts-mocha",
-    "build": "tsc",
-    "startF": "webpack-dev-server --content-base ./build --inline  --hot --mode development --config ./src/frontend/webpack/webpack.config.js",
-    "deployF": "webpack --mode production --config ./src/frontend/webpack/webpack.config.deploy.js"
+    "build": "./node_modules/.bin/tsc",
+    "startF": "./node_modules/.bin/webpack-dev-server --content-base ./build --inline  --hot --mode development --config ./src/frontend/webpack/webpack.config.js",
+    "deployF": "./node_modules/.bin/webpack --mode production --config ./src/frontend/webpack/webpack.config.deploy.js"
   },
   "author": "John Shepard",
   "license": "GNU",
