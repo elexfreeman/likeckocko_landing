@@ -1,0 +1,49 @@
+.top-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  h1 {
+    text-align: center;
+    color: $dark-color;
+    font-size: 1.8em;
+    padding-top: 1rem;
+  }
+
+  h2 {
+    text-align: center;
+    color: $primary-color;
+    font-size: 1em;
+    padding-top: 0;
+  }
+
+  .top-logo {
+    padding-top: 2rem;
+
+    img {
+      width: 16rem;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}
+
+.page-logo-top {
+  margin-bottom: 1rem;
+}
+
+.msgModal {
+  .showMsgModal {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .top-container {
+    .top-logo {
+      img {
+        width: 50vw;
+        margin: 0 auto;
+      }
+    }
+  }
+}
