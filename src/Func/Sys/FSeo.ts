@@ -16,6 +16,7 @@ export interface SeoI {
     sTitle: string,
     sDescription: string,
     sKeywords: string,
+    sPage: string,
 }
 
 /**
@@ -50,6 +51,7 @@ export const fMake =
                             sTitle: sNTitle,
                             sDescription: sNDescription,
                             sKeywords: sNKeywords,
+                            sPage: 'Likechoco',
                         }
                     }
 

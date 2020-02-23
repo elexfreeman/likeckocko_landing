@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="shortcut icon" href="favicon/favicon.ico">
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/main.css?ver=<%= sApiVer %>">
 
   <title><%= seo.title %></title>
   <meta name="description" content="<%= seo.description %>" />
@@ -54,9 +54,9 @@
       <div class="columns">
         <div class="column col-8 col-sm-10 phone-col ">
 
-          <a class="phone-col" href="tel:+7 996 342 8027">
+          <a class="phone-col" href="tel:<%= site.phone %>">
             <img src="http://likechoco.ru//img/phone-ico.png" class="phone-ico">&nbsp;
-            <span>+7 996 342 8027</span>
+            <span><%= site.phone %></span>
           </a>
         </div>
         <div class="column col-4 col-sm-2 text-right order-col">

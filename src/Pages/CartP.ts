@@ -1,31 +1,16 @@
 import { MainRequest } from "../Func/Sys/MainRequest";
 import * as express from 'express';
-import * as Config from "../Func/Config/Config";
+import { faSendRouter } from "../Func/Sys/FResponse";
 const router = express.Router();
-
-/**
- * Index page
- * @param req 
- * @param res 
- * @param next 
- */
-const faCart = async (req: MainRequest, res: express.Response, next: any) => {
-    try {
-        res.render('cart', {
-            seo: req.seo,
-            page: "Корзина",
-            apiUrl: Config.apiUrl
-        });
-    } catch (error) {
-        req.errorType = 404;
-        next(error)
-    };
-}
 
 /**
  * Страница товара
  */
-router.get('/cart', faCart);
+router.get('/cart',  faSendRouter('cart', async (req: MainRequest) => {
+    req.seo.sPage = "Корзина";
+    return {
+    }
+}));
 
 export {
     router as CartController

@@ -3,6 +3,8 @@ export const site = {
     email: 'likechoco@mail.ru',
 }
 
+export const sApiVer = "1";
+
 export const port = 3005;
 export const protocol = 'http';
 export const baseUrl = 'localhost';

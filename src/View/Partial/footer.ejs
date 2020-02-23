@@ -19,8 +19,8 @@
         <div class="columns">
             <div class="column col-3 col-sm-12"></div>
             <div class="column col-6 col-md-6 col-sm-12">
-                <div class="phone">+7 996 342 8027</div>
-                <div class="email">likechoco@mail.ru</div>
+                <div class="phone"><%= site.phone %></div>
+                <div class="email"><%= site.email %></div>
                 <div class="qq">По любым вопросам и для заказа свяжитесь с нами по телефону, почте и в соцсетях.</div>
                 <div class="soc">
                     <a href="https://www.instagram.com/alisachocolatier/" target="_blank">
@@ -119,11 +119,11 @@
 
 
 <script>
-    var phone = '+7 996 342 8027';
+    var phone = '<%= site.phone %>';
     var apiUrl = '<%= apiUrl %>';
 </script>
 
-<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/index.js?ver=<%= sApiVer %>"></script>
 </body>
 
 </html>

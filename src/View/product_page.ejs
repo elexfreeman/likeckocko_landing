@@ -9,7 +9,7 @@
     </li>
 
     <li class="breadcrumb-item">
-      <a><%= product.caption %></a>
+      <a><%= data.product.caption %></a>
     </li>
   </ul>
 
@@ -21,22 +21,22 @@
   <div class="columns">
     <div class="product-img column col-6 col-sm-12">
       <div class="card-image">
-        <img class="p-img img-1" src="/img/<%= product.img %>" alt="<%= product.caption %>">
-        <img class="p-img img-2" src="/img/<%= product.bgImg %>" alt="<%= product.caption %>">
+        <img class="p-img img-1" src="/img/<%= data.product.img %>" alt="<%= data.product.caption %>">
+        <img class="p-img img-2" src="/img/<%= data.product.bgImg %>" alt="<%= data.product.caption %>">
       </div>
     </div>
     <div class="product-container column col-6  col-sm-12">
-      <h1><%= product.caption %></h1>
-      <div class="price"><%= product.price %> руб.</div>
+      <h1><%= data.product.caption %></h1>
+      <div class="price"><%= data.product.price %> руб.</div>
       <div>
-        <div product_img="/img/<%= product.img %>" 
-          product_id='<%= product.id %>'
-          product_caption='<%= product.caption %>' 
-          product_price='<%= product.price %>' 
+        <div product_img="/img/<%= data.product.img %>" 
+          product_id='<%= data.product.id %>'
+          product_caption='<%= data.product.caption %>' 
+          product_price='<%= data.product.price %>' 
           class='card-button'></div>
       </div>
       <div class="description">
-        <%- product.description %>
+        <%- data.product.description %>
       </div>
     </div>
   </div>
