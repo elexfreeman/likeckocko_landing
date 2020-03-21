@@ -3,7 +3,7 @@
 
 <div class="main-content content container grid-xl center-container product-page ">
 
-  <ul class="breadcrumb">
+  <ul class="breadcrumb desctop">
     <li class="breadcrumb-item">
       <a href="/"><i class="icon icon-arrow-left"></i> На главную</a>
     </li>
@@ -13,7 +13,12 @@
     </li>
   </ul>
 
-  <div class="page-logo-top">
+  <div class="mob h1-product-mob">
+    <a href="/"><i class="icon icon-arrow-left"></i></a>
+    <span><%= data.product.caption %></span>
+  </div>  
+
+  <div class="page-logo-top desctop">
     <a href="/"><img src="/img/logo.jpg" /></a>
   </div>
 
@@ -26,7 +31,7 @@
       </div>
     </div>
     <div class="product-container column col-6  col-sm-12">
-      <h1><%= data.product.caption %></h1>
+      <h1 class="desctop"><%= data.product.caption %></h1>
       <div class="price"><%= data.product.price %> руб.</div>
       <div>
         <div product_img="/img/<%= data.product.img %>" 

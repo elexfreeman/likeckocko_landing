@@ -35,9 +35,25 @@
   }
 }
 
+.breadcrumb.mob{
+  display: none;
+}
+
+.mob {
+  display: none;
+}
+
 
 
 @media (max-width: 580px) {
+    
+  .mob {
+    display: inherit !important;
+  }
+
+  .desctop {
+    display: none;
+  }
 
   .main-content{
     padding-top: 0;
