@@ -10,7 +10,7 @@ const router = express.Router();
  * Индексная страница
  */
 router.get('/',  faSendRouter('index', async (req: MainRequest) => {
-    const aProducts: ProductI[] = await FProduct.faList();
+    const aProducts: ProductI[] = await FProduct.faListByCategoryId(1);
     return {
         products: aProducts,
     }

@@ -3,6 +3,7 @@ import { db } from "../Sys/DBConnect";
 import UrlGetCyrillic from "../Lib/UrlGetCyrillic";
 import { fGetFirst, fGet2First } from "../Sys/SFunc";
 export const ProductTabel = 'products';
+export const ProductCategoryTabel = 'product_category';
 
 /**
  * Список товаров
@@ -10,6 +11,22 @@ export const ProductTabel = 'products';
 export const faList: TProduct.TList = async () => {
     let sql = `SELECT * FROM ${ProductTabel} p`;
     const rawData = await db.raw(sql, {});
+    if (!fGetFirst(rawData)) throw 'Products not found';
+
+    return <TProduct.ProductI[]>fGetFirst(rawData)
+        .map((product: TProduct.ProductI) => fProcessBgIg(product));
+}
+
+/**
+ * Список товаров
+ */
+export const faListByCategoryId = async (categoryId: number): Promise<TProduct.ProductI[]> => {
+    let sql = `SELECT p.* FROM ${ProductTabel} p
+    JOIN ${ProductCategoryTabel} pc
+    ON pc.product_id=p.id
+    where pc.category_id=:category_id
+    `;
+    const rawData = await db.raw(sql, {category_id: categoryId});
     if (!fGetFirst(rawData)) throw 'Products not found';
 
     return <TProduct.ProductI[]>fGetFirst(rawData)
