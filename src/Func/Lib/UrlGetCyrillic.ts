@@ -1,13 +1,13 @@
 /*Клас для генерации кирилистического урла в лат*/
-export default class UrlGetCyrillic {
+export class UrlGetCyrillic {
 
     static translit(text: string) {
-// Символ, на который будут заменяться все спецсимволы
+        // Символ, на который будут заменяться все спецсимволы
         let space = '-';
-// Берем значение из нужного поля и переводим в нижний регистр
+        // Берем значение из нужного поля и переводим в нижний регистр
         text = text.toLowerCase();
         let transl: any;
-// Массив для транслитерации
+        // Массив для транслитерации
         transl = {
             'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh',
             'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n',
@@ -45,22 +45,28 @@ export default class UrlGetCyrillic {
 
         return result;
     }
-/* 
-    static intToMonth(i) {
-        if (i < 10) {
-            return '0' + i.toString()
-        } else {
-            return i.toString();
-        }
-    } */
-/* 
-    static getUrl(id, caption) {
-        let d = new Date();
-       
-        if (caption.length > 80){
-            caption = caption.substring(0, 80);
-        }
-        return UrlGetCyrillic.translit(caption + ' ' + UrlGetCyrillic.intToMonth(d.getMonth() + 1) + ' ' + UrlGetCyrillic.intToMonth(d.getDate()) + " " + id)
-    } */
 }
 
+/**
+ * генератор URL
+ * @param sCaption 
+ */
+export const fGetUrl =
+    (id: string) =>
+        (sCaption: string): string => id + '-' + UrlGetCyrillic.translit(sCaption);
+
+
+/**
+ * Выдает id из урла
+ * @param sUrl 
+ */        
+export const fGetIdFromUrl = (sUrl:string):number =>{
+    let resp = 0;
+
+    try {
+        const aUrl= sUrl.split('-');
+        resp = Number(aUrl[0]);
+    } catch {}
+
+    return resp;
+}
