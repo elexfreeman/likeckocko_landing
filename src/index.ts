@@ -8,6 +8,7 @@ import { fLogErrors } from './Func/Sys/Middleware/MidErrorHandler';
 import { ProductController } from './Pages/ProductP';
 import { CartController } from './Pages/CartP';
 import { OrderController } from './Pages/OrderAPI';
+import { BlogController } from './Pages/BlogP';
 
 const app: express.Express = fApp(express())
     (true) // bUseCors
@@ -21,7 +22,10 @@ console.log('server start at http://localhost:' + port);
 app.use(IndexController); // главная
 app.use(CartController); // корзина
 app.use(OrderController); // API корзины
+app.use(BlogController); // товар
 
+
+/* Все остальны стр вставлять выше товара */
 app.use(ProductController); // товар
 
 app.use(fLogErrors);

@@ -4,7 +4,7 @@ import * as moment from "moment";
 import * as express from 'express';
 import { MainRequest } from "../MainRequest";
 import { TError } from "../FErrors";
-import { fResponse } from "../FResponse";
+import { fResponse, fResponseStatic } from "../FResponse";
 
 /**
  * Страница не найдена
@@ -14,11 +14,7 @@ import { fResponse } from "../FResponse";
  * @param next 
  */
 const fErorr404 = (err: any, req: MainRequest, res: express.Response, next: express.NextFunction) => {
-    res.status(404).render('404', {
-        seo: req.seo,
-        page: "404",
-        apiUrl: Config.apiUrl
-    })
+    res.status(404).render('404', fResponseStatic(req, {}))
 
     next(err);
 }

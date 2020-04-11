@@ -3,6 +3,17 @@
 $primary-color: #6d5545;
 $dark-color: #493d34;
 
+.center-container {
+    width: 900px;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .center-container{
+        width: auto;
+    }
+}
+
 // Import full Spectre source code
 @import "node_modules/spectre.css/src/spectre";
 @import "node_modules/spectre.css/src/spectre-icons";
@@ -12,4 +23,5 @@ $dark-color: #493d34;
 @import "./product.scss";
 @import "./card_component.scss";
 @import "./product_page.scss";
+@import "./blog.scss";
 
