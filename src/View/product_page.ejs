@@ -1,50 +1,56 @@
 <% include Partial/head.ejs %>
 
 
-<div class="main-content content container grid-xl center-container product-page ">
+<div class="main-content content container grid-xl  product-page ">
 
-  <ul class="breadcrumb desctop">
-    <li class="breadcrumb-item">
-      <a href="/"><i class="icon icon-arrow-left"></i> На главную</a>
-    </li>
+  <div class="center-container">
+    <ul class="breadcrumb desctop">
+      <li class="breadcrumb-item">
+        <a href="/"><i class="icon icon-arrow-left"></i> На главную</a>
+      </li>
 
-    <li class="breadcrumb-item">
-      <a><%= data.product.caption %></a>
-    </li>
-  </ul>
+      <li class="breadcrumb-item">
+        <a><%= data.product.caption %></a>
+      </li>
+    </ul>
 
-  <div class="mob h1-product-mob">
-    <a href="/"><i class="icon icon-arrow-left"></i></a>
-    <span><%= data.product.caption %></span>
-  </div>  
+    <div class="product-h1-mob">
+      <a href="/"><i class="icon icon-arrow-left"></i></a>
+      <span><%= data.product.caption %></span>
+    </div>
 
-  <div class="page-logo-top desctop">
-    <a href="/"><img src="/img/logo.jpg" /></a>
+    <div class="product-h1-tab">
+      <span><%= data.product.caption %></span>
+    </div>
+    <!-- 
+    <div class="page-logo-top desctop">
+      <a href="/"><img src="/img/logo.jpg" /></a>
+    </div>
+   -->
+
+    <div class="product-columns">
+      <div class="product-img product-col">
+        <div class="card-image">
+          <img class="p-img img-1" src="/img/<%= data.product.img %>" alt="<%= data.product.caption %>">
+          <img class="p-img img-2" src="/img/<%= data.product.bgImg %>" alt="<%= data.product.caption %>">
+        </div>
+      </div>
+      <div class="product-container product-col">
+        <h1 class="product-h1-dsc"><%= data.product.caption %></h1>
+        <div class="price"><%= data.product.price %> руб.</div>
+        <div>
+          <div product_img="/img/<%= data.product.img %>" product_id='<%= data.product.id %>'
+            product_caption='<%= data.product.caption %>' product_price='<%= data.product.price %>' class='card-button'>
+          </div>
+        </div>
+        <div class="description">
+          <%- data.product.description %>
+        </div>
+      </div>
+    </div>
   </div>
 
 
-  <div class="columns">
-    <div class="product-img column col-6 col-sm-12">
-      <div class="card-image">
-        <img class="p-img img-1" src="/img/<%= data.product.img %>" alt="<%= data.product.caption %>">
-        <img class="p-img img-2" src="/img/<%= data.product.bgImg %>" alt="<%= data.product.caption %>">
-      </div>
-    </div>
-    <div class="product-container column col-6  col-sm-12">
-      <h1 class="desctop"><%= data.product.caption %></h1>
-      <div class="price"><%= data.product.price %> руб.</div>
-      <div>
-        <div product_img="/img/<%= data.product.img %>" 
-          product_id='<%= data.product.id %>'
-          product_caption='<%= data.product.caption %>' 
-          product_price='<%= data.product.price %>' 
-          class='card-button'></div>
-      </div>
-      <div class="description">
-        <%- data.product.description %>
-      </div>
-    </div>
-  </div>
 
 </div>
 
