@@ -1,6 +1,5 @@
 import * as TProduct from "./TProduct";
 import { db } from "../Sys/DBConnect";
-import UrlGetCyrillic from "../Lib/UrlGetCyrillic";
 import { fGetFirst, fGet2First } from "../Sys/SFunc";
 export const ProductTabel = 'products';
 export const ProductCategoryTabel = 'product_category';
@@ -26,7 +25,7 @@ export const faListByCategoryId = async (categoryId: number): Promise<TProduct.P
     ON pc.product_id=p.id
     where pc.category_id=:category_id
     `;
-    const rawData = await db.raw(sql, {category_id: categoryId});
+    const rawData = await db.raw(sql, { category_id: categoryId });
     if (!fGetFirst(rawData)) throw 'Products not found';
 
     return <TProduct.ProductI[]>fGetFirst(rawData)
@@ -61,11 +60,3 @@ export const fProcessBgIg = (product: TProduct.ProductI) => {
     return product
 }
 
-
-/**
- * генератор URL
- * @param sCaption 
- */
-export const fGetUrl =
-    (sCaption: string) =>
-        (id: string): string => id + '-' + UrlGetCyrillic.translit(sCaption);

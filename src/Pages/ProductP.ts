@@ -3,13 +3,15 @@ import * as express from 'express';
 import * as FProduct from "../Func/Product/FProduct";
 import { ProductI } from "../Func/Product/TProduct";
 import { faSendRouter } from "../Func/Sys/FResponse";
+import { ProductR as R} from "./Router"
+
 const router = express.Router();
 
 
 /**
  * Страница товара
  */
-router.get('/:url',  faSendRouter('product_page', async (req: MainRequest) => {
+router.get(R.sUrl,  faSendRouter(R.sTpl, async (req: MainRequest) => {
     const product: ProductI = await FProduct.faByUrl(req.params['url']);       
     req.seo.sPage = "Товар";
     req.seo.sTitle = `Likechoco - ${product.caption}`;

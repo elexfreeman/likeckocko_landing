@@ -1,0 +1,46 @@
+<% include ../Partial/head.ejs %>
+
+<div class="main-content content container grid-xl center-container">
+    <div class="blog-list center-container">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/"><i class="icon icon-arrow-left"></i> На главную</a>
+            </li>
+
+            <li class="breadcrumb-item">
+                <a>Блог</a>
+            </li>
+        </ul>
+        
+        <h1>Блог</h1>
+
+        <div class="blog-text">
+            Здесь вы найдете самые полезные советы по производству и употреблению шоколада и новые идеи для отдыха.
+            Наши эксперты расскажут как поесть, как выбрать хороший ремесленный шоколад. Приятного вам шокладного наслажденья!
+        </div>
+
+        <div class="blog-list-items">
+            <% data.aBlog.forEach(function(blog) { %>
+                <a href="/blog/<%= data.fGetUrl(blog.id)(blog.title) %>" class="blog-list-item">
+                    <div class="card">
+                        <div class="card-image">
+                            <img class="img-responsive" src="<%= blog.main_img %>" alt="<%= blog.title %>">
+                        </div>
+                        <div class="card-header">
+                            <div class="card-title h5"><%= blog.title %></div>
+                        </div>
+                        <div class="card-body"><%= blog.short_description %>
+                        </div>
+                    </div>
+                </a>
+            <!--  -->
+            <% }); %>       
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<% include ../Partial/footer.ejs %>

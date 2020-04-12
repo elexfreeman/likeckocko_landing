@@ -1,0 +1,49 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .header-item {
+        width: 400px;
+
+        .logo-top{
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 100px;
+
+            }
+        }
+    }
+
+    /* логотип */
+    .header-item.logo-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 100px;
+
+        }
+    }
+
+    /* корзина */
+    .header-item.header-cart {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;    
+    }
+
+   
+}
+
+
+
+@media (max-width: 580px) {
+    .header {
+        .header-phone {
+            display: none;
+        }
+    } 
+  
+  }
