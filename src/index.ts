@@ -22,7 +22,7 @@ console.log('server start at http://localhost:' + port);
 app.use(IndexController); // главная
 app.use(CartController); // корзина
 app.use(OrderController); // API корзины
-app.use(BlogController); // товар
+//app.use(BlogController); // товар
 
 
 /* Все остальны стр вставлять выше товара */
