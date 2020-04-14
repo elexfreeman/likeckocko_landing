@@ -1,9 +1,10 @@
 import Vue from 'vue';
 
-import toCart from "./components/toCart.vue";
 import msgModal from "./components/msgModal.vue";
-import cartComponent from "./components/cartComponent.vue";
-import cartPage from "./components/cartPage.vue";
+
+import ToCart from "../../Module/Order/Components/ToCart.vue";
+import Cart from "../../Module/Order/Components/Cart.vue";
+import CartPage from "../../Module/Order/Components/CartPage.vue";
 
 import store from './AppVuex';
 
@@ -28,7 +29,7 @@ const run = () => {
                 product_img: buttons[i].getAttribute('product_img'),
             },
             store: store,
-            render: h => h(toCart)
+            render: h => h(ToCart)
         });
     }
 
@@ -45,7 +46,7 @@ const run = () => {
         el: '#cart',
         data: {},
         store: store,
-        render: h => h(cartComponent)
+        render: h => h(Cart)
     });
 
 
@@ -58,7 +59,7 @@ const run = () => {
             el: '#cart_page',
             data: {},
             store: store,
-            render: h => h(cartPage)
+            render: h => h(CartPage)
         });
     }
 

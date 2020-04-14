@@ -1,10 +1,10 @@
 import * as express from 'express';
-import { port } from "./Func/Config/Config";
+import { port } from "./Module/Config/Config";
 import { fApp } from './FApp';
 
 
 import { IndexController } from "./Pages/IndexP";
-import { fLogErrors } from './Func/Sys/Middleware/MidErrorHandler';
+import { fLogErrors } from './Module/Sys/Middleware/MidErrorHandler';
 import { ProductController } from './Pages/ProductP';
 import { CartController } from './Pages/CartP';
 import { OrderController } from './Pages/OrderAPI';

@@ -5,14 +5,15 @@
 </template>
 
 <script lang='ts'>
-import { OrderController } from "../OrderController";
-const orderController = new OrderController();
+import { OrderController } from "../FOrderCtrl";
 
 export default {
-  name: "orderComponent",
+  name: "Cart",
 
   data() {
-    return {};
+    return {
+      orderController: new OrderController(this.$store)
+    };
   }, // data
 
   mounted() {}, // mounted
@@ -22,23 +23,23 @@ export default {
       console.log(e);
     },
     onShowCart() {
-      orderController.onShowCart();
+      this.orderController.onShowCart();
     },
     onHideCart() {
-      orderController.onHideCart();
+      this.orderController.onHideCart();
     },
     countInc(item: any) {
       item.count++;
-      orderController.countInc(item, +1);
+      this.orderController.countInc(item, +1);
     },
     countDec(item: any) {
       if (item.count > 1) {
         item.count--;
-        orderController.countInc(item, -1);
+        this.orderController.countInc(item, -1);
       }
     },
     checkout() {
-      orderController.checkout();
+      this.orderController.checkout();
     },
     removeItem(item: any) {
       this.$store.state.order.removeItem(item.id);

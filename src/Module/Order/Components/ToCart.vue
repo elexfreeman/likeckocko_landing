@@ -5,22 +5,22 @@
 </template>
 
 <script lang='ts'>
-import { OrderController } from "../OrderController";
-
-const orderController = new OrderController();
+import { OrderController } from "../FOrderCtrl";
 
 export default {
-  name: "toCart",
+  name: "ToCart",
 
   data() {
-    return {};
+    return {
+      orderController: new OrderController(this.$store)
+    };
   },
 
   mounted() {}, // mounted
 
   methods: {
     onAddCart(e: any) {
-      orderController.onAddCart(this.$parent);
+      this.orderController.onAddCart(this.$parent);
     }
   }, // methods
 

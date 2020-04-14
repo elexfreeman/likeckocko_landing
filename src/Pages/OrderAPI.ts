@@ -1,15 +1,15 @@
-import { MainRequest } from "../Func/Sys/MainRequest";
+import { MainRequest } from "../Module/Sys/MainRequest";
 import * as express from 'express';
-import { fResponse } from "../Func/Sys/FResponse";
-import { TError } from "../Func/Sys/FErrors";
+import { fResponse } from "../Module/Sys/FResponse";
+import { TError } from "../Module/Sys/FErrors";
 
-import * as VUser from "../Func/User/VUser";
-import * as FUser from "../Func/User/FUser";
+import * as VUser from "../Module/User/VUser";
+import * as FUser from "../Module/User/FUser";
 
-import * as VOrder from "../Func/Order/VOrder";
-import * as FOrder from "../Func/Order/FOrder";
-import * as FCommonOrder from "../Func/Order/FCommonOrder";
-import { CheckoutI } from "../Func/Sys/ReqI/OrderR";
+import * as VOrder from "../Module/Order/VOrder";
+import * as FOrder from "../Module/Order/BOrder";
+import * as FCommonOrder from "../Module/Order/FCommonOrder";
+import { CheckoutI } from "../Module/Sys/ReqI/OrderR";
 
 const router = express.Router();
 

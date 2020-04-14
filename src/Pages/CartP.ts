@@ -1,6 +1,6 @@
-import { MainRequest } from "../Func/Sys/MainRequest";
+import { MainRequest } from "../Module/Sys/MainRequest";
 import * as express from 'express';
-import { faSendRouter } from "../Func/Sys/FResponse";
+import { faSendRouter } from "../Module/Sys/FResponse";
 import { CartR as R} from "./Router"
 
 const router = express.Router();

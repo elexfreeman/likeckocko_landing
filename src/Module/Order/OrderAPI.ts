@@ -1,8 +1,8 @@
-import { OrderI } from "../../Func/Order/TOrder";
+import { OrderI } from "./TOrder";
 import axios from "axios";
-import { apiUrl } from "../../Func/Config/Config";
-import { UserI } from "../../Func/User/TUser";
-import { CheckoutI, CheckoutRespI } from "../../Func/Sys/ReqI/OrderR";
+import { apiUrl } from "../Config/Config";
+import { UserI } from "../User/TUser";
+import { CheckoutI, CheckoutRespI } from "../Sys/ReqI/OrderR";
 
 
 const vAxios = axios.create({

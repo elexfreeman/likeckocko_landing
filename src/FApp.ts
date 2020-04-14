@@ -3,8 +3,8 @@ const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-import { MidReq } from "./Func/Sys/Middleware/MidReq";
-import { faMidSeo } from './Func/Sys/Middleware/MidSeo';
+import { MidReq } from "./Module/Sys/Middleware/MidReq";
+import { faMidSeo } from './Module/Sys/Middleware/MidSeo';
 
 export const fApp =
     (app: express.Express) =>

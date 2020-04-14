@@ -1,8 +1,8 @@
 import { User } from "./User";
 import { Cart } from "./Cart";
 import BaseObject from "./BaseObject";
-import { ProductI } from "../../Func/Product/TProduct";
-import { OrderI } from "../../Func/Order/TOrder";
+import { ProductI } from "../../Module/Product/TProduct";
+import { OrderI } from "../../Module/Order/TOrder";
 
 /**
  * Заказ

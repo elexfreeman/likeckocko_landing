@@ -120,51 +120,52 @@
 </template>
 
 <script lang='ts'>
-import { OrderController } from "../OrderController";
-import { UserController } from "../UserController";
-import * as FFOrder from "../../../Func/Order/FFOrder";
-import { OrderI } from "../../../Func/Order/TOrder";
-import { UserI } from "../../../Func/User/TUser";
-import { fHasError, fCheckField } from "../../../Func/TValidator";
+import { OrderController } from "../FOrderCtrl";
+import { UserController } from "../../User/FUserCtrl";
+import * as FFOrder from "../FFOrder";
+import { OrderI } from "../TOrder";
+import { UserI } from "../../User/TUser";
+import { fHasError, fCheckField } from "../../TValidator";
 
-const orderController = new OrderController();
-const userController = new UserController();
 
 export default {
-  name: "cartPage",
+  name: "CartPage",
 
   data() {
-    return {};
+    return {
+      orderController: new OrderController(this.$store),
+      userController: new UserController(this.$store),
+    };
   }, // data
 
   mounted() {}, // mounted
 
   methods: {
     onShowCart() {
-      orderController.onShowCart();
+      this.orderController.onShowCart();
     },
     onHideCart() {
-      orderController.onHideCart();
+      this.orderController.onHideCart();
     },
     countInc(item: any) {
-      orderController.countInc(item, +1);
+      this.orderController.countInc(item, +1);
     },
     countDec(item: any) {
       if (item.count > 1) {
-        orderController.countInc(item, -1);
+        this.orderController.countInc(item, -1);
       }
     },
     onChangeOrder(order: OrderI) {
-      orderController.onSaveCart(order);
+      this.orderController.onSaveCart(order);
     },
     onChangeUser(user: UserI) {
-      userController.onChangeUser(user);
+      this.userController.onChangeUser(user);
     },
     checkout() {
-      orderController.checkout();
+      this.orderController.checkout();
     },
     removeItem(item: any) {
-      orderController.fRemoveProduct(item);
+      this.orderController.fRemoveProduct(item);
     },
  
     hasError(sField: string) {

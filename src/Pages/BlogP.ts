@@ -1,10 +1,10 @@
-import { MainRequest } from "../Func/Sys/MainRequest";
+import { MainRequest } from "../Module/Sys/MainRequest";
 import * as express from 'express';
-import { faSendRouter } from "../Func/Sys/FResponse";
+import { faSendRouter } from "../Module/Sys/FResponse";
 import { BlogMainR, BlogPageR } from "./Router"
-import { BlogI } from "../Func/Blog/TBlog";
-import * as FBlog from "../Func/Blog/FBlog";
-import { fGetUrl, fGetIdFromUrl } from "../Func/Lib/UrlGetCyrillic";
+import { BlogI } from "../Module/Blog/TBlog";
+import * as FBlog from "../Module/Blog/FBlog";
+import { fGetUrl, fGetIdFromUrl } from "../Module/Lib/UrlGetCyrillic";
 
 
 const router = express.Router();

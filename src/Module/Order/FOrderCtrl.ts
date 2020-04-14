@@ -1,21 +1,21 @@
-import store from './AppVuex';
-import * as FFOrder from '../../Func/Order/FFOrder';
-import * as FCommonOrder from '../../Func/Order/FCommonOrder';
+import * as FFOrder from './FFOrder';
+import * as FCommonOrder from './FCommonOrder';
 import * as OrderAPI from "./OrderAPI";
-import { CheckoutRespI } from '../../Func/Sys/ReqI/OrderR';
-import { OrderProductI, OrderI } from '../../Func/Order/TOrder';
-import { compose } from '../../Func/Sys/SFunc';
+import { CheckoutRespI } from '../Sys/ReqI/OrderR';
+import { OrderProductI, OrderI } from './TOrder';
+import { compose } from '../Sys/SFunc';
+import { FBaseController } from '../Sys/FBaseController';
 /**
  * Оформление заказа
  */
-export class OrderController {
+export class OrderController extends FBaseController {
 
     /**
      * Событие сохранения состояния корхины
      * @param order 
      */
     public onSaveCart(order: OrderI) {
-        store.commit("setOrder", order);
+        this.store.commit("setOrder", order);
         FFOrder.fSave(order);
     }
 
@@ -40,8 +40,8 @@ export class OrderController {
         compose(FFOrder.fSave, FFOrder.fChangeProducts(order))(products);
 
         /* сохраняем vuex */
-        store.commit("setOrder", FFOrder.fGet());
-        store.commit("setTotalPrice", this.fCalcOrderTotalSumm());
+        this.store.commit("setOrder", FFOrder.fGet());
+        this.store.commit("setTotalPrice", this.fCalcOrderTotalSumm());
 
     }
 
@@ -57,8 +57,8 @@ export class OrderController {
         compose(FFOrder.fSave, FFOrder.fRemoveProduct(order))(product.product_id);
         
         /* сохраняем vuex */
-        store.commit("setOrder", FFOrder.fGet());
-        store.commit("setTotalPrice", this.fCalcOrderTotalSumm());
+        this.store.commit("setOrder", FFOrder.fGet());
+        this.store.commit("setTotalPrice", this.fCalcOrderTotalSumm());
 
     }
 
@@ -79,14 +79,14 @@ export class OrderController {
         FFOrder.fSave(order);
 
         /* сохраняем vuex */
-        store.commit("setOrder", order);
-        store.commit("setTotalPrice", this.fCalcOrderTotalSumm());
+        this.store.commit("setOrder", order);
+        this.store.commit("setTotalPrice", this.fCalcOrderTotalSumm());
 
         /* показываем сообщение */
-        store.commit("setShowMsgModal", 'Товар добавлен в корзину');
+        this.store.commit("setShowMsgModal", 'Товар добавлен в корзину');
         setTimeout(() => {
             /* скрываем сообщение */
-            store.commit("setShowMsgModal", null);
+            this.store.commit("setShowMsgModal", null);
         }, 1000);
 
     }
@@ -96,14 +96,14 @@ export class OrderController {
      * Показать корзину
      */
     public onShowCart() {
-        store.commit("setShowCart", true);
+        this.store.commit("setShowCart", true);
     }
 
     /**
      * Скрыть корзину
      */
     public onHideCart() {
-        store.commit("setShowCart", false);
+        this.store.commit("setShowCart", false);
     }
 
     /**
@@ -111,27 +111,27 @@ export class OrderController {
      */
     public async checkout() {
 
-        store.commit('setOnLoad', true);
-        store.commit('setCartFormError', false);
+        this.store.commit('setOnLoad', true);
+        this.store.commit('setCartFormError', false);
 
         const resp: CheckoutRespI = await OrderAPI
-            .fCheckout(store.state.user)
-            (store.state.order);
+            .fCheckout(this.store.state.user)
+            (this.store.state.order);
 
-        store.commit('setCartErrors', resp.errors);
+        this.store.commit('setCartErrors', resp.errors);
 
         if (resp.ok) {
 
-            store.commit('setOnLoad', false);
+            this.store.commit('setOnLoad', false);
             this.onHideCart();
 
-            store.commit('setShowMsgModal', 'Спасибо за оформление заказа');
+            this.store.commit('setShowMsgModal', 'Спасибо за оформление заказа');
             setTimeout(() => {
-                store.commit('setShowMsgModal', null);
+                this.store.commit('setShowMsgModal', null);
             }, 4000)
 
         } else {
-            store.commit('setCartFormError', true);
+            this.store.commit('setCartFormError', true);
         }
 
     }

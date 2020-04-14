@@ -1,0 +1,51 @@
+
+$receiptH: 550px;
+$receiptW: 300px;
+
+.receipt {
+    .receipt-list{
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: center;
+
+        .receipt-item {
+
+            height: $receiptH;
+            width: $receiptW;
+            border: 1px solid $border-light;
+            margin: 1rem;
+
+            .receipt-caption, .receipt-short-description{
+                padding: 1rem;
+            }
+            img {
+                width: 100%;
+                height: auto;
+                max-width: $receiptW;
+                max-height: $receiptH;
+            }
+        }
+    }
+}
+
+@media (max-width: 580px) {
+    .receipt {
+        .receipt-list{
+            .receipt-item {
+                margin: 0.5rem;
+                height: auto;
+                width: auto;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    max-width: inherit;
+                    max-height: inherit;
+                }
+            }
+
+          
+        }
+    }
+}

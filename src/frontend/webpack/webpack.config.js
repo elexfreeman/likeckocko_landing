@@ -117,6 +117,11 @@ module.exports = {
             inject: 'body',
             template: './src/frontend/html/cart.html'
         }),
+        new HtmlWebpackPlugin({
+            filename: 'receipt.html',
+            inject: 'body',
+            template: './src/frontend/html/receipt.html'
+        }),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
@@ -141,7 +146,9 @@ module.exports = {
         concatenateModules: true
     },
     externals: [{
-        xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}'
+        xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}',
+        "react": "React",
+        "react-dom": "ReactDOM",
     }],
 
 

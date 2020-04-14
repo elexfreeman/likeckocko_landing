@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Vuex, { StoreOptions } from 'vuex';
-import { OrderI } from '../../Func/Order/TOrder';
-import * as FFOrder from '../../Func/Order/FFOrder';
-import * as FFUser from '../../Func/User/FFUser';
-import * as FCommonOrder from '../../Func/Order/FCommonOrder';
+import { OrderI } from '../../Module/Order/TOrder';
+import * as FFOrder from '../../Module/Order/FFOrder';
+import * as FFUser from '../../Module/User/FFUser';
+import * as FCommonOrder from '../../Module/Order/FCommonOrder';
 
-import { UserI } from '../../Func/User/TUser';
+import { UserI } from '../../Module/User/TUser';
 
 declare var window: any;
 Vue.use(Vuex);

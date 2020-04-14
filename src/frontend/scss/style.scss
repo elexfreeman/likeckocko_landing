@@ -2,6 +2,7 @@
 // Define variables to override default ones
 $primary-color: #6d5545;
 $primary-color-light: #cebfb4;
+$border-light: #e9e4e0;
 $dark-color: #493d34;
 
 .center-container {
@@ -26,4 +27,5 @@ $dark-color: #493d34;
 @import "./product_page.scss";
 @import "./blog.scss";
 @import "./header.scss";
+@import "./receipt.scss";
 
