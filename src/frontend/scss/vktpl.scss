@@ -1,0 +1,18 @@
+$bgTopBgColor : #563829;
+$bgTopColor : #fff;
+.vktpl {
+    background-color: #f0f0f0;
+
+    .card_component {
+        color: $bgTopColor;
+        background-color: $bgTopBgColor;
+
+        a:visited ,a {
+            color: $bgTopColor;
+        }
+    }
+
+    .main-content {
+       
+    }
+}

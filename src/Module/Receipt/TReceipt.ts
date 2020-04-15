@@ -7,3 +7,14 @@ export interface ReceiptI {
     description: string;
 }
 
+
+
+
+/**
+ * Картинки рецептов
+ */
+export interface ReceiptImgI {
+    id?: number;
+    img_id: number;
+    receipt_id: number;
+}

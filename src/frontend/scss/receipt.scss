@@ -1,37 +1,68 @@
 
-$receiptH: 550px;
-$receiptW: 300px;
+$receiptH: auto;
+$receiptW: 100%;
 
 .receipt {
+
+   
     .receipt-list{
         display: flex;
         flex-flow: row wrap;
         align-items: center;
-        justify-content: center;
+        justify-content: center;      
+
+
+        .receipt-content{
+            display: flex;
+        }
 
         .receipt-item {
-
+            display: block;
             height: $receiptH;
             width: $receiptW;
-            border: 1px solid $border-light;
-            margin: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
 
-            .receipt-caption, .receipt-short-description{
-                padding: 1rem;
+            border-bottom: 1px solid #ddd;
+            
+            .receipt-caption{
+                padding-bottom: 1rem;
+                display: block;
+            }
+            
+            .receipt-caption:hover{
+            }
+            .receipt-short-description{
+                padding-left: 1rem;
             }
             img {
-                width: 100%;
+                width: 350px;
                 height: auto;
                 max-width: $receiptW;
                 max-height: $receiptH;
             }
         }
+
+        .receipt-item:hover {
+            text-decoration: none;
+            color: #563829;
+        }
+    }
+
+    .receipt-list :last-child {
+        border: 0;
+        padding-bottom: 0;
     }
 }
 
 @media (max-width: 580px) {
     .receipt {
         .receipt-list{
+
+            .receipt-content{
+                display: inherit;
+            }
+
             .receipt-item {
                 margin: 0.5rem;
                 height: auto;
@@ -43,9 +74,32 @@ $receiptW: 300px;
                     max-width: inherit;
                     max-height: inherit;
                 }
+
+                .receipt-short-description{
+                    padding-left: 0;
+                    padding-top: 1rem;
+                }
             }
 
           
+        }
+    }
+}
+
+
+.receipt-page{
+    .receipt-content{
+
+        .receipt-img{
+            width: 400px;
+            float: left;
+            margin-right: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .receipt-description{
+            overflow: auto;
+            width: 100%;
         }
     }
 }
