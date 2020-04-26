@@ -8,5 +8,5 @@
  */
 export interface ImgI {
     id?: number;
-    url: string;
+    file_name: string; // md5 of file
 }
