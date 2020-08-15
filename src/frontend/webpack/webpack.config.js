@@ -13,7 +13,7 @@ module.exports = {
     mode: "development", //режим сборки
     entry: entry, //объект с точками входа
     output: {
-        path: path.join(__dirname, 'build/'), //общий путь для выходных файлов
+        path: path.join(__dirname, '../../../public'), //общий путь для выходных файлов
         filename: "js/[name].js" //в этом параметре мы индивидуально добавляем необходимую директорию перед именем файлов
     },
 
@@ -48,7 +48,7 @@ module.exports = {
         },
         {
             test: /\.scss$/,
-            use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+            use: ['style-loader', 'css-loader', 'sass-loader']
 
         },
         {
@@ -71,10 +71,10 @@ module.exports = {
         {
             test: /\.(jpg|png|gif)$/,
             use: {
-                loader: 'file',
+                loader: 'url-loader',
                 query: {
-                    useRelativePath: false,
-                    name: 'images/[name].[ext]'
+                    limit: 10000,
+                    name: 'img/[name].[ext]'
                 }
             }
         },
@@ -116,6 +116,12 @@ module.exports = {
             filename: 'cart.html',
             inject: 'body',
             template: './src/frontend/html/cart.html'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'trufels.html',
+            inject: 'body',
+            template: './src/frontend/html/trufels.html',
+            chunks:['trufels'],
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',

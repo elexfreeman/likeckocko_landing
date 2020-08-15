@@ -1,0 +1,65 @@
+@import "node_modules/spectre.css/src/spectre";
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+
+.trufels {
+    font-family: 'Bad Script', cursive;
+    .top-slide{
+        width: 100%;
+        height: 80vh; 
+        background-image: url('../img/top-slide.jpg');
+        padding: 40px;
+        background-size: cover;
+        background-attachment: fixed;
+        .center-border {
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            border: 1px solid #000;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        .top-title {
+            padding: 20px 70px;
+            background: #ffffff52;
+            font-size: 50px;
+            font-weight: 700;
+            color: #000;
+        }
+        .action-button {
+            font-size: 25px;
+            background: #000;
+            margin-top: 30px;
+            color: #fff;
+            border-radius: 25px;
+            padding: 6px; 
+            cursor: pointer;
+
+            .border-box {
+                padding: 20px 40px;
+                border: 1px solid #fff;
+                border-radius: 20px;
+            }
+        }
+    }
+
+    .left-slide {
+        display: flex;
+        width: 100%;
+        min-height: 80vh;
+        .composition-box {
+            background: #000;
+            color:#fff;
+            width: 50%;
+            height: 100%;
+        min-height: 80vh;
+        }
+        .img-box {
+            width: 50%;
+            min-height: 80vh;
+            height: 100%;  background-image: url('../img/trufel-match-limo1.jpg');
+            background-size: cover;
+        }
+    }
+}
