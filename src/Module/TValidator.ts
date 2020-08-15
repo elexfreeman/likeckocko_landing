@@ -71,7 +71,7 @@ export class TValidator {
         return this;
     }
 
-    private fIsNull(): boolean {
+    public fIsNull(): boolean {
         let resp = false;
         try {
             switch (this.data) {
