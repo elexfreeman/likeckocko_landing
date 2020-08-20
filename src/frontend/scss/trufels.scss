@@ -92,6 +92,36 @@
         background-image: url('../img/trufel-match-limo1.jpg');
         background-size: cover;
     }
+    .img-box.malina{
+        background-image: url('../img/trufel/malina.jpg');
+    }
+    .img-box.izum-rom{
+        background-image: url('../img/trufel/izum-rom.jpg');
+    }
+    .img-box.cofe-belis{
+        background-image: url('../img/trufel/cofe-belis.jpg');
+    }
+    .img-box.mindal{
+        background-image: url('../img/trufel/mindal.jpg');
+    }
+    .img-box.lavanda-k{
+        background-image: url('../img/trufel/lavanda-k.jpg');
+    }
+    .img-box.match-fis{
+        background-image: url('../img/trufel/match-fis.jpg');
+    }
+    .center-slide.fund-va{
+        background-image: url('../img/trufel/fund-va.jpg');
+        background-position-y: -608px;
+    }
+    .center-slide.matcha-limon{
+        background-image: url('../img/trufel/matcha-limon.jpg');
+        background-position-y: -608px;
+    }
+    .center-slide.vishny-kon{
+        background-image: url('../img/trufel/vishny-kon.jpg');
+        background-position-y: -778px;
+    }
     .composition-border {
         border: 1px solid #fff;
         height: 100%;
@@ -156,14 +186,14 @@
         .img-box, .left-side-box  {
             width: 100%;
             display: flex;
-            align-items: flex-end;
+            background-attachment: fixed;
         }
 
         .composition-mob{
-           height: 200px;
+            height: 150px;
             width: 100%;
-            background-color: #000;
-            color: #fff;
+            background-color: #fff;
+            color: #000;
             text-align: left;
             padding: 20px;;
 
@@ -173,6 +203,9 @@
         }
         .img-box.swipe , .center-slide.swipe {
             background-attachment: fixed;
+        }
+        .center-slide.fund-va{
+            background-position-y: 0px;
         }
     }
 }
