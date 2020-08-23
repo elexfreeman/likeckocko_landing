@@ -86,7 +86,6 @@
             font-size: 20px;
             line-height: 40px;
         }
-       
     }
     .img-box {
         background-image: url('../img/trufel-match-limo1.jpg');
@@ -150,7 +149,7 @@
         background-image: url('../img/trufel-match-limo1.jpg');
         background-size: cover;
         .composition-box {
-            background-color: #ffffff73;
+            background-color: #ffffffa6;
             color: #000;
         }
     }
@@ -163,6 +162,9 @@
 
 @media (max-width: 800px) {
     .trufels {
+        .top-slide{
+            background-attachment: scroll;
+        }
         .composition-mob{
             display: block; 
         }
@@ -177,6 +179,7 @@
             .top-title {
                 font-size: 40px;
                 margin-bottom: 30px;
+                padding: 20px;
             }
         }
         .composition-box {
@@ -186,23 +189,29 @@
         .img-box, .left-side-box  {
             width: 100%;
             display: flex;
-            background-attachment: fixed;
+            background-attachment: scroll;
         }
 
         .composition-mob{
-            height: 150px;
+            height: max-content;
             width: 100%;
-            background-color: #fff;
+            background-color: #ffffffad;
             color: #000;
             text-align: left;
             padding: 20px;;
 
             .composition-title{
                 font-size: 24px;
+                padding-bottom: 20px;
+                text-align: center;
+                font-weight: bold;
+            }
+            .composition-content{
+                text-align: right;
             }
         }
         .img-box.swipe , .center-slide.swipe {
-            background-attachment: fixed;
+            background-attachment: scroll;
         }
         .center-slide.fund-va{
             background-position-y: 0px;
