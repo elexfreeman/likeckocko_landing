@@ -246,6 +246,15 @@
             display: none;
         }
 
+        .confirm-text {
+            font-size: 30px;
+            font-weight: 600;
+            color: #000;
+        }
+        .confirm-text.mob {
+            display: none;
+        }
+
         .left-side {
             width: 50%;
             height: 100vh;
@@ -370,7 +379,17 @@
             .title.mob {
                 display: block;
                 padding-bottom: 5px;
-                line-height: 45px;
+                line-height: 41px;
+                font-size: 30px; 
+            }
+            
+            .confirm-text.mob {
+                display: block;
+                font-size: 20px;
+                font-weight: 500;   
+            }
+            .confirm-text {
+                display: none;
             }
 
             .tovar-discription {
